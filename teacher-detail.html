@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lưu Bút Giáo Viên • 12A2 Memories</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script:wght@600;700&family=Nunito:wght@400;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="teacher-detail.css">
+</head>
+
+<body class="detail-page is-locked">
+  <div class="noise-overlay"></div>
+  <div class="global-texture" aria-hidden="true"></div>
+
+  <section class="intro-section" id="introSection">
+    <section class="hero">
+        <div class="pre-loader">
+            <p>Loading</p>
+            <div class="counter">
+                <div class="digit-1">
+                    <div class="num">0</div>
+                    <div class="num offset">1</div>
+                </div>
+                <div class="digit-2">
+                    <div class="num">0</div>
+                    <div class="num offset">1</div>
+                    <div class="num">2</div>
+                    <div class="num">3</div>
+                    <div class="num">4</div>
+                    <div class="num">5</div>
+                    <div class="num">6</div>
+                    <div class="num">7</div>
+                    <div class="num">8</div>
+                    <div class="num">9</div>
+                    <div class="num">0</div>
+                </div>
+                <div class="digit-3">
+                    <div class="num">0</div>
+                    <div class="num">1</div>
+                    <div class="num">2</div>
+                    <div class="num">3</div>
+                    <div class="num">4</div>
+                    <div class="num">5</div>
+                    <div class="num">6</div>
+                    <div class="num">7</div>
+                    <div class="num">8</div>
+                    <div class="num">9</div>
+                </div>
+                <div class="digit-4">%</div>
+            </div>
+            <div class="progress-bar"></div>
+        </div>
+        <div class="hero-imgs">
+            <img src="assets\teachers/12_co_trang/wipe_1.jpg" alt="">
+            <img src="assets\teachers/12_co_trang/wipe_2.jpg" alt="">
+            <img src="assets\teachers/12_co_trang/wipe_3.jpg" alt="">
+            <img src="assets\teachers/12_co_trang/wipe_4.jpg" alt="">
+            <img src="assets\teachers/12_co_trang/wipe_5.jpg" alt="">
+            <img src="assets\teachers/12_co_trang/anh_hero.png" alt="">
+        </div>
+    </section>
+  </section>
+  <div class="read-progress" aria-hidden="true"><span class="bar" id="readBar"></span></div>
+
+  <nav class="fixed-nav start-hidden">
+    <div class="logo">
+      <a href="index.html"><img src="assets/logo.png" alt="12A2 Logo"></a>
+    </div>
+    <div class="nav-actions">
+        </div>
+  </nav>
+
+  <main class="detail-main">
+    <header class="d-hero" id="hero">
+      <div class="hero-cover" id="heroCover" aria-hidden="true"></div>
+      <div class="hero-glow" aria-hidden="true"></div>
+
+      <div class="hero-center-layer" id="heroCoverLayer">
+          <div class="center-title">
+              <h2 class="font-hand full-name" id="tFullNameCover">Loading...</h2>
+              <div class="center-line"></div>
+              <p class="font-hand-2 role-cover" id="tRoleCover">...</p>
+          </div>
+      </div>
+
+      <div class="hero-inner start-hidden" id="heroDetailLayer">
+        <div class="hero-left">
+          <div class="hero-kicker" id="heroKicker">
+            <i class="fa-solid fa-ticket"></i> Người lái đò của A2K28
+          </div>
+          <h2 class="hero-name-small font-hand" id="tName">...</h2>
+          <div class="hero-quote" id="tQuote">“...”</div>
+          
+          <div class="hero-ctas">
+            <button class="cta hover-target" id="loveBtn" type="button">
+              Thả tim <i class="fa-solid fa-heart"></i> <span id="loveCount">0</span>
+            </button>
+            <button class="cta ghost hover-target" id="jumpStoryBtn" type="button">
+              Xem lưu bút <i class="fa-solid fa-arrow-down"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <img id="tCutout" class="hero-cutout" src="" alt="">
+        </div>
+      </div>
+    </header>
+
+    <div class="notebook-layout-wrapper">
+        <section class="d-body" id="story">
+          <aside class="d-aside">
+            <div class="sticky-note">
+                <div class="tape-strip top-center"></div>
+                <div class="aside-title"><i class="fa-solid fa-circle-info"></i> Profile</div>
+                <div class="aside-row"><span class="k">Tên:</span> <span class="v" id="aName">—</span></div>
+                <div class="aside-row"><span class="k">Môn:</span> <span class="v" id="aSubject">—</span></div>
+                <div class="divider-dashed"></div>
+                <ul class="bullets" id="aBullets"></ul>
+                <button class="sticky-btn hover-target" id="openThanksBtn">
+                    Gửi lời nhắn <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+          </aside>
+
+          <article class="d-article notebook-paper">
+            <div class="paper-holes"></div> 
+            <div class="article-head">
+                <div class="article-chip">Ký ức 2023 - 2026</div>
+                <div class="article-meta" id="readMeta">Lưu bút 12A2</div>
+            </div>
+            <div class="story-content" id="storyBody"></div>
+            <figure class="story-figure reveal" id="fig1">
+                <div class="paper-clip"></div>
+                <img id="fig1Img" src="" alt="">
+                <figcaption id="fig1Cap">...</figcaption>
+            </figure>
+            <div class="story-content" id="storyBody2"></div>
+            <blockquote class="big-quote reveal" id="bigQuote">
+                “...”<span class="who" id="bigQuoteWho">— 12A2</span>
+            </blockquote>
+            <section class="gallery">
+                <div class="gallery-head"><h2><i class="fa-regular fa-images"></i> Khoảnh khắc</h2></div>
+                <div class="polaroids" id="galleryGrid"></div>
+            </section>
+          </article>
+        </section>
+
+        <section class="message-section reveal" id="publicMessageWall">
+            <div class="petals" aria-hidden="true"></div>
+             <div class="corkboard-header">
+                <h2 class="font-hand">Góc Nhắn Gửi Yêu Thương <i class="fa-solid fa-envelope-open-text"></i></h2>
+                <p>Nơi lưu giữ những lời chưa nói...</p>
+             </div>
+             <div class="corkboard-wall" id="publicWall">
+                 <div class="pinned-note sample-note" style="background:#fff7d1; --r:-2deg">
+                     <div class="pin"></div>
+                     <div class="note-content font-hand-2">
+                         <b>Admin:</b> Hãy để lại những dòng lưu bút thật đẹp ở nút bên trên nhé!
+                     </div>
+                 </div>
+             </div>
+        </section>
+    </div>
+
+    <footer class="full-width-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-train-subway"></i> 12A2 EXPRESS
+                </div>
+                <p class="footer-desc">Chuyến tàu lưu giữ thanh xuân rực rỡ nhất.</p>
+                <a href="https://www.facebook.com/profile.php?id=61550802202398" target="_blank" class="footer-link facebook-link hover-target">
+                    <i class="fa-brands fa-facebook"></i> Ối zồi ôi con tôi học A2  
+                </a>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">THÔNG TIN TRƯỜNG</h4>
+                <div class="school-address">
+                    <i class="fa-solid fa-school"></i>
+                    <p>
+                        <strong>THPT Chuyên Hùng Vương</strong><br>
+                        593 Đại lộ Bình Dương, Hiệp Thành,<br>
+                        TP. Thủ Dầu Một, Bình Dương
+                    </p>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">ĐỘI NGŨ THỰC HIỆN</h4>
+                <ul class="crew-list">
+                    <li>Phạm Đức Anh</li>
+                    <li>Nguyễn Ngọc Như Hiếu</li>
+                    <li>Thái Trần Bảo Châu</li>
+                    <li>Lê Nhã Thi</li>
+                    <li>Phạm Bảo Linh</li>
+                    <li>Hà Thị Ánh Dương</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom-quote">“Thanh xuân không có giá như, chỉ có những điều đã qua là đẹp nhất.”</div>
+    </footer>
+  </main>
+  
+  <div class="thanks-modal" id="thanksModal" aria-hidden="true">
+    <div class="thanks-card paper-texture">
+      <div class="thanks-head">
+          <div class="thanks-title font-hand">Viết lưu bút</div>
+          <button class="thanks-close hover-target" id="thanksClose">✕</button>
+      </div>
+      <div class="thanks-body">
+          <p class="guide-text">Tin nhắn của bạn sẽ được ghim công khai lên bảng tin cuối trang.</p>
+          <input class="thanks-input font-hand-2" id="thanksName" maxlength="30" placeholder="Tên bạn...">
+          <textarea class="thanks-input font-hand-2" id="thanksMsg" rows="4" maxlength="150" placeholder="Lời nhắn..."></textarea>
+          <button class="cta w-100 hover-target" id="thanksSend" style="background:var(--c-brown); color:#fff">Ghim lên bảng <i class="fa-solid fa-thumbtack"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="photo-modal" id="photoModal" aria-hidden="true">
+    <button class="photo-close hover-target" id="photoClose" type="button" aria-label="Đóng">✕</button>
+
+    <div class="photo-stage">
+      <figure class="photo-figure" id="photoFigure">
+        <img id="photoView" src="" alt="">
+        <figcaption class="photo-caption font-hand-2" id="photoCaption"></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <script src="teacher-detail.js"></script>
+</body>
+</html>

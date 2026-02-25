@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bảo Tàng Ký Ức 12A2</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@400;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="is-locked">
+
+  <div class="noise-overlay"></div>
+
+  <div class="global-texture" aria-hidden="true"></div>
+
+  <div id="cinematic-intro">
+    <div class="intro-video-wrapper">
+        <video id="introVideo" playsinline muted autoplay preload="auto">
+            <source src="assets/intro/intro-memories.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+    <div class="intro-ui-layer">
+        <div class="camcorder-ui top-left">
+            <span><i class="fa-solid fa-tape"></i> SP</span><br>
+            <span><i class="fa-solid fa-battery-three-quarters"></i></span>
+        </div>
+
+        <div class="camcorder-ui top-right text-right">
+            <div class="status-indicator rewind-mode">
+                <i class="fa-solid fa-backward fa-fade"></i> TUA LẠI...
+            </div>
+            <div class="status-indicator rec-mode hidden">
+                <i class="fa-solid fa-circle text-red-500"></i> REC
+            </div>
+            <span class="year-counter" id="yearCounter">2026</span>
+        </div>
+    <div class="memory-title">
+        <div class="line line-1">Ngày tháng ấy...</div>
+        <div class="line line-2">chúng ta rực rỡ nhất.</div>
+    </div>
+</div>
+    <button id="skipCinematicBtn" class="hover-target">Vào lớp ngay <i class="fa-solid fa-forward"></i></button>
+    <div id="whiteFlash"></div>
+  </div>
+
+  <nav class="fixed-nav hidden-nav">
+    <div class="logo">
+      <img src="assets/logo.png" alt="12A2 Logo">
+    </div>
+    <div class="nav-actions">
+      <button class="nav-btn hover-target" id="mapBtn" title="Bản đồ ga">
+        <i class="fa-solid fa-ticket"></i> Bản Đồ
+      </button>
+    </div>
+  </nav>
+
+  <div class="map-modal" id="mapModal" aria-hidden="true">
+    <div class="map-card">
+      <div class="map-head">
+        <div class="map-title"><i class="fa-solid fa-route"></i> Lộ Trình Chuyến Tàu</div>
+        <button class="map-close hover-target" id="mapClose">✕</button>
+      </div>
+      <div class="map-stations">
+        <button class="station hover-target" data-jump="hero"><span class="dot"></span> Ga Xuất Phát: Khởi Đầu Của Thanh Xuân</button>
+        <button class="station hover-target" data-jump="lane" data-hall="0"><span class="dot"></span> Ga Lớp 10: Bỡ Ngỡ</button>
+        <button class="station hover-target" data-jump="lane" data-hall="1"><span class="dot"></span> Ga Lớp 11: Trưởng Thành</button>
+        <button class="station hover-target" data-jump="lane" data-hall="2"><span class="dot"></span> Ga Lớp 12: Mùa Hạ Cuối</button>
+        <button class="station hover-target" data-jump="outro"><span class="dot"></span> Trạm Cuối: Hành Trình Rực Rỡ</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="section hero" id="hero">
+      <div class="hero-layers-full">
+        <img class="hero-photo" src="assets/index/main.jpg" alt="Hero" onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=2200&q=80'"/>
+        <div class="hero-overlay-gradient"></div>
+        <div class="hero-content-center">
+          <div class="hero-kicker">Niên khóa 2023 – 2026</div>
+          <h1 class="hero-title">
+             <span class="d-block">12A2</span>
+             <span class="d-script">Vườn Ký Ức</span>
+          </h1>
+          <p class="hero-desc">Chạm vào từng thước phim, đi qua từng năm tháng.</p>
+          <button class="hero-cta hover-target" id="goLaneBtn">
+             Khởi hành <i class="fa-solid fa-arrow-right-long"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section lane" id="lane">
+      <div class="lane-sticky-header">
+        <div class="lane-ticket">
+            <span class="ticket-hole"></span>
+            12A2 EXPRESS TICKET
+            <span class="ticket-hole right"></span>
+        </div>
+        <div class="lane-progress">
+          <span class="p-dot hover-target" data-p="0" title="Lớp 10"></span>
+          <span class="p-dot hover-target" data-p="1" title="Lớp 11"></span>
+          <span class="p-dot hover-target" data-p="2" title="Lớp 12"></span>
+        </div>
+      </div>
+
+      <div class="horizontal-scroll-container">
+        <div class="horizontal-world">
+          <section class="exhibit-hall grade-10" data-hall="0">
+            <div class="exhibit-content">
+              <div class="text-block">
+                <div class="year-badge">2023 - 2024</div>
+                <h2>Lớp 10
+                    <svg class="doodle-circle" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10,30 Q50,5 90,30 T180,30" fill="none" stroke="#dbe7c6" stroke-width="3" />
+                    </svg>
+                </h2>
+                <p>Những ngày đầu tiên của cấp 3. Áo trắng chưa lấm lem mực, mọi thứ đều mới mẻ và lạ lẫm.</p>
+                <div class="tags"><span>#NhapHoc</span><span>#OnlineLearning</span></div>
+              </div>
+            </div>
+
+            <div class="teacher-scatter-layer" id="scatter10"></div>
+          </section>
+
+          <section class="exhibit-hall grade-11" data-hall="1">
+            <div class="exhibit-content">
+              <div class="text-block">
+                <div class="year-badge">2024 - 2025</div>
+                <h2>Lớp 11
+                    <svg class="doodle-circle" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10,30 Q50,5 90,30 T180,30" fill="none" stroke="#dbe7c6" stroke-width="3" />
+                    </svg>
+                </h2>
+                <p>Giai đoạn "chạy đà". Những bài kiểm tra dồn dập, những lần cúp học đi ăn vặt, và cả những rung động đầu đời.</p>
+                <div class="tags"><span>#NhapHoc</span><span>#OnlineLearning</span></div>
+              </div>
+            </div>
+
+            <div class="teacher-scatter-layer" id="scatter11"></div>
+          </section>
+
+          <section class="exhibit-hall grade-12" data-hall="2">
+            <div class="exhibit-content">
+              <div class="text-block">
+                <div class="year-badge">2025 - 2026</div>
+                <h2>Lớp 12
+                    <svg class="doodle-circle" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10,30 Q50,5 90,30 T180,30" fill="none" stroke="#dbe7c6" stroke-width="3" />
+                    </svg>
+                </h2>
+                <p>Mùa chia ly. Tiếng ve kêu râm ran, những dòng lưu bút viết vội trên áo, và lời hứa "Họp lớp nhé!".</p>
+                <div class="tags"><span>#TotNghiep</span><span>#ChiaTay</span></div>
+              </div>
+            </div>
+
+            <div class="teacher-scatter-layer" id="scatter12"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="section outro" id="outro">
+      <div class="petals" aria-hidden="true"></div>
+      <div class="outro-container">
+        <div class="outro-header">
+            <h2>Trạm Cuối: Hành Trình Rực Rỡ</h2>
+            <p>Đừng rời đi mà chưa để lại một lời nhắn nhé!</p>
+        </div>
+        <div class="guestbook-layout">
+            <div class="gb-form-card">
+                <h3><i class="fa-solid fa-pen-nib"></i> Viết cho A2, cho chúng ta...</h3>
+                <form id="gbForm">
+                    <input id="gbName" type="text" placeholder="Tên bạn là gì?" maxlength="30" autocomplete="off" class="hover-target">
+                    <textarea id="gbMsg" rows="5" placeholder="Muốn nhắn nhủ gì nào..." maxlength="200" class="hover-target"></textarea>
+                    <button type="button" id="gbBtn" class="hover-target">Ghim lên bảng <i class="fa-solid fa-thumbtack"></i></button>
+                </form>
+            </div>
+            <div class="gb-board-area">
+                <div class="pinned-notes" id="notes"></div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="full-width-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-train-subway"></i> 12A2 EXPRESS
+                </div>
+                <p class="footer-desc">Chuyến tàu lưu giữ thanh xuân rực rỡ nhất.</p>
+                <a href="https://www.facebook.com/profile.php?id=61550802202398" target="_blank" class="footer-link facebook-link hover-target">
+                    <i class="fa-brands fa-facebook"></i> Ối zồi ôi con tôi học A2
+                </a>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">THÔNG TIN TRƯỜNG</h4>
+                <div class="school-address">
+                    <i class="fa-solid fa-school"></i>
+                    <p>
+                        <strong>THPT Chuyên Hùng Vương</strong><br>
+                        593 Đại lộ Bình Dương, Hiệp Thành,<br>
+                        TP. Thủ Dầu Một, Bình Dương
+                    </p>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">ĐỘI NGŨ THỰC HIỆN</h4>
+                <ul class="crew-list">
+                    <li>Phạm Đức Anh</li>
+                    <li>Nguyễn Ngọc Như Hiếu</li>
+                    <li>Thái Trần Bảo Châu</li>
+                    <li>Lê Nhã Thi</li>
+                    <li>Phạm Bảo Linh</li>
+                    <li>Hà Thị Ánh Dương</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom-quote">“Thanh xuân không có giá như, chỉ có những điều đã qua là đẹp nhất.”</div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
