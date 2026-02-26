@@ -407,15 +407,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- INTRO ANIMATION ---
   const runIntro = (data) => {
-    const overlay = $("#intro-overlay");
-    const stripsContainer = $("#introStrips");
-    const finalLayer = $(".intro-final-layer");
-    const finalImg = $(".intro-final-img");
+    const introSection = $("#introSection");
+    const stripsContainer = $("#introStrips"); // Đã thêm ID này vào HTML ở Bước 1
     const heroContent = $(".hero-center-layer");
     const cutout = $(".hero-right");
 
-    // Nếu trang không có intro overlay thì skip nhưng vẫn init scroll/reveal
-    if (!overlay || !stripsContainer) {
+    // Nếu trang không có intro section hoặc strips container thì bỏ qua
+    if (!introSection || !stripsContainer) {
       initHeroScroll();
       initReveals();
       ScrollTrigger.refresh();
@@ -425,45 +423,80 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.set([".fixed-nav", "#heroDetailLayer"], { opacity: 0, visibility: "hidden", pointerEvents: "none" });
     gsap.set(".fixed-nav", { y: -20 });
 
-    if (finalImg) { finalImg.src = data.cover; gsap.set(finalImg, { scale: 1 }); }
+    const stripCount = 6; // Số lượng ảnh muốn xuất hiện trong Intro
+    let sourceImages = [];
 
-    const stripCount = 5;
-    let sourceImages = [...(data.gallery || []).map(g => g.src)];
-    if (sourceImages.length < 5) sourceImages = [...sourceImages, data.fig1?.src, data.cover].filter(Boolean);
-
-    stripsContainer.innerHTML = "";
-    const strips = []; const stripImgs = [];
-    for (let i = 0; i < stripCount; i++) {
-      const div = document.createElement("div"); div.className = "intro-strip";
-      const img = document.createElement("img"); img.className = "intro-strip-img";
-      img.src = sourceImages[i % sourceImages.length];
-      gsap.set(img, { scale: 1.1 });
-      div.appendChild(img);
-      stripsContainer.appendChild(div);
-      strips.push(div); stripImgs.push(img);
+    // Lấy ảnh từ gallery
+    if (data.gallery && data.gallery.length > 0) {
+        sourceImages = data.gallery.filter(g => !g.src.match(/\.(mp4|webm|ogg|mov)$/i)).map(g => g.src); // Chỉ lấy ảnh, bỏ qua video
+    }
+    
+    // Nếu chưa đủ 5 ảnh, bổ sung thêm từ cover, fig1, fig2...
+    if (sourceImages.length < stripCount) {
+         const extraImages = [data.cover, data.fig1?.src, data.fig2?.src, data.fig3?.src].filter(Boolean);
+         sourceImages = [...sourceImages, ...extraImages];
+    }
+    
+    // Nếu vẫn không có ảnh nào (giáo viên chưa có data), dùng logo làm mặc định
+    if (sourceImages.length === 0) {
+        sourceImages = ["assets/logo.png"];
     }
 
+    // Xóa rỗng container trước khi chèn để tránh bị lặp ảnh
+    stripsContainer.innerHTML = "";
+    const stripImgs = [];
+    
+    // Tạo và chèn các thẻ <img> vào DOM
+    for (let i = 0; i < stripCount; i++) {
+      const img = document.createElement("img");
+      // Lấy ảnh tuần tự, lặp lại nếu hết mảng
+      img.src = sourceImages[i % sourceImages.length]; 
+      
+      // Thêm fallback nếu đường dẫn ảnh bị lỗi
+      img.onerror = function() {
+          this.src = 'assets/logo.png';
+      };
+
+      gsap.set(img, { scale: 1.2 }); // Set trạng thái ban đầu cho GSAP
+      stripsContainer.appendChild(img);
+      stripImgs.push(img);
+    }
+
+    // Định nghĩa timeline animation
     const tl = gsap.timeline({
       defaults: { ease: "power3.inOut" },
       onComplete: () => {
         document.body.classList.remove("is-locked");
-        overlay.style.display = "none";
+        
+        // Ẩn mượt mà phần Intro thay vì display: none ngay lập tức
+        gsap.to(introSection, {
+            autoAlpha: 0,
+            duration: 1,
+            ease: "power2.out",
+            onComplete: () => introSection.remove() // Xóa hẳn khỏi DOM cho nhẹ
+        });
+
         initHeroScroll();
         initReveals();
         ScrollTrigger.refresh();
       }
     });
 
-    tl.set([heroContent, cutout].filter(Boolean), { opacity: 0, y: 30 })
-      .set(strips, { yPercent: 100 })
-      .set(finalLayer, { opacity: 0 });
+    // Ẩn hero content lúc đầu
+    tl.set([heroContent, cutout].filter(Boolean), { opacity: 0, y: 30 });
 
-    tl.to(strips, { yPercent: 0, duration: 2.2, stagger: { amount: 0.3, from: "random" }, ease: "expo.out" })
-      .from(stripImgs, { yPercent: 20, duration: 2.0, ease: "power2.out" }, "<")
-      .to(finalLayer, { opacity: 1, duration: 1.2 }, "-=0.8")
-      .to({}, { duration: 0.3 })
-      .to(overlay, { opacity: 0, duration: 1.5, ease: "power1.inOut" })
-      .to([heroContent, cutout].filter(Boolean), { opacity: 1, y: 0, duration: 1.5, stagger: 0.2, ease: "power3.out" }, "-=1.5");
+    // Hiệu ứng Intro
+    tl.to(stripImgs, { 
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", // Mở rộng ảnh (bạn có thể cần chỉnh CSS clip-path ban đầu nếu dùng cái này)
+        duration: 1.2, 
+        ease: "power4.inOut", 
+        stagger: 0.25, 
+        delay: 9 // Chờ preloader chạy xong (như logic cũ của bạn)
+    }, 0) 
+    .to(stripImgs, { scale: 1, duration: 3, ease: "power3.inOut", delay: 9 }, 0)
+    
+    // Hiện Hero content sau khi Intro xong
+    .to([heroContent, cutout].filter(Boolean), { opacity: 1, y: 0, duration: 1.5, stagger: 0.2, ease: "power3.out" }, 10.5); 
   };
 
   // --- TO TOP ---

@@ -1,56 +1,33 @@
 {
-  "thay-suyen": {
-    "name": "Thầy Suyền",
-    "fullName": "Tôn Thất Suyền",
-    "subject": "Tin Học",
-    "grade": [10,11,12],
-    "avatar": "assets/teachers/10_11_12_thay_suyen/avatar.jpg",
-    "role": "Giáo viên Tin Học",
-    "quote": "“Tụi em hiểu chưa, thầy nói lại lần nữa nè nghe kĩ nha!”",
-    "cover": "assets/teachers/10_11_12_thay_suyen/anh_hero.png",
-    "cutout": "assets/teachers/10_11_12_thay_suyen_cutout.png",
-    "audio": "assets/teachers/10_11_12_thay_suyen/voice.mp3",
-    "audioFileName": "REC_31912209.wav", 
-    "fig1": { "src": "assets/intro/intro-memories.mp4", "cap": "Một chiều mưa 12A2..." },
-    "bigQuote": "“Chúc thầy luôn mạnh khỏe, hạnh phúc và tiếp tục giữ mãi ngọn lửa đam mê với nghề.”",
-    "bullets": ["Thương học sinh", "Tâm lý hết nấc", "Đẹp trai s1tg!"],
-    "storyA": [
-      "Thầy Suyền là giáo viên Tin học đã đồng hành suốt 3 năm cấp ba cùng lớp chúng em. Trong khoảng thời gian ấy, thầy luôn giữ trọn sự nhiệt huyết, mang đến những giờ học vừa bổ ích vừa thoải mái. Thầy giảng bài cẩn thận, dễ hiểu và không ngại dành thêm thời gian để hướng dẫn lại khi chúng em còn bỡ ngỡ. Nhờ cách dạy gần gũi và tận tình của thầy, những kiến thức tưởng chừng khô khan trở nên sinh động và dễ tiếp cận hơn rất nhiều."
-    ],
-    "storyB": [
-      "Không chỉ truyền đạt kiến thức, thầy còn khuyến khích chúng em chủ động tìm tòi, sáng tạo và mạnh dạn thử sức với những điều mới. Thầy luôn động viên khi chúng em gặp khó khăn và âm thầm dõi theo sự tiến bộ của từng bạn trong lớp. Nhờ sự kiên nhẫn và trách nhiệm ấy, chúng em không chỉ tiến bộ trong môn Tin học mà còn trưởng thành hơn trong cách suy nghĩ và làm việc."
-    ],
-    "storyC": [
-      "Ba năm trôi qua với biết bao kỷ niệm, chúng em thật sự trân trọng sự đồng hành của thầy. Chúng em biết ơn vì đã có một người thầy tận tâm như vậy trong những năm tháng quan trọng của tuổi học trò."
-    ],
-    "gallery": [
-      { "src": "assets/teachers/10_11_12_thay_suyen/wipe_1.jpg", "cap": "Hội trại", "desc": "Kỷ niệm ngày cắm trại." },
-      { "src": "assets/teachers/10_11_12_thay_suyen/wipe_2.jpg", "cap": "Họp PH", "desc": "" },
-      { "src": "assets/teachers/10_11_12_thay_suyen/wipe_3.jpg", "cap": "Chụp lén", "desc": "" },
-      { "src": "assets/teachers/10_11_12_thay_suyen/wipe_4.jpg", "cap": "Tổng kết", "desc": "" },
-      { "src": "assets/teachers/10_11_12_thay_suyen/wipe_5.jpg", "cap": "Kỷ yếu", "desc": "" }
-    ]
+  "___01_BAN_GIAM_HIEU_VA_CHU_NHIEM___": "=========================================================",
+  
+  "co-lam": {
+    "name": "Cô Lam", "fullName": "Đinh Thị Phương Lam", "subject": "Chủ nhiệm", "grade": [10],
+    "avatar": "assets/logo.png", "role": "Giáo viên Chủ nhiệm lớp 10", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "co-hang": {
+    "name": "Cô Hằng", "fullName": "Hoàng Thị Kim Hằng", "subject": "Địa Lý", "grade": [11],
+    "avatar": "assets/logo.png", "role": "Giáo viên Chủ nhiệm lớp 11", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
   },
   "co-trang": {
-    "name": "Cô Trang",
-    "fullName": "Thân Thị Phương Trang",
-    "subject": "Toán Học",
-    "grade": 12,
-    "avatar": "assets/teachers/12_co_trang/avatar.jpg",
-    "role": "Chủ nhiệm & Giáo viên Toán",
-    "quote": "“Đi chậm cho chắc — nhưng đã làm là phải tới nơi.”",
-    "cover": "assets/teachers/12_co_trang/anh_hero.png",
-    "cutout": "assets/teachers/12_co_trang_cutout.png",
-    "audio": "assets/teachers/12_co_trang/voice.m4a",
-    "audioFileName": "REC_24052026.wav", 
-    "audioTrackName": "Lời chúc của cô Trang dành cho 12A2",
+    "name": "Cô Trang", "fullName": "Thân Thị Phương Trang", "subject": "Toán Học", "grade": [12],
+    "avatar": "assets/teachers/12_co_trang/avatar.jpg", "role": "Chủ nhiệm & Giáo viên Toán",
+    "quote": "“Sau chuyện này mình rút ra được kinh nghiệm gì nè?”", "cover": "assets/teachers/12_co_trang/anh_hero.png",
+    "cutout": "assets/teachers/12_co_trang_cutout.png", "audio": "assets/teachers/12_co_trang/voice.m4a",
+    "audioFileName": "REC_24052026.wav", "audioTrackName": "Lời chúc của cô Trang dành cho 12A2",
     "fig1": { "src": "assets/teachers/12_co_trang/wipe_1.jpg", "cap": "Một chiều mưa 12A2..." },
-    "bigQuote": "“Cảm ơn cô vì đã giữ tụi em ‘ở lại’ với nhau.”",
-    "bullets": ["Hay nhắc: 'Làm lại cho tử tế'", "Tâm lý hết nấc", "Nghiêm nhưng thương"],
+    "bigQuote": "“Cô Trang, chúng em thương cô rất nhiều. Cảm ơn cô vì đã giữ tụi em ‘ở lại’ với nhau.”",
+    "bullets": ["Chăm nom đàn con thơ", "Tâm lý hết nấc", "Nghiêm nhưng thương"],
     "storyA": [
-      "Cô Trang là giáo viên Toán lớp 12 của chúng em, cô là một cô giáo nhỏ nhắn với nụ cười vô cùng dễ thương, cô luôn truyền cho chúng em tình yêu với từng trang sách bằng giọng giảng ấm áp và đầy cảm xúc. Nhờ cô, những bài toán không còn khô khan mà trở nên gần gũi, ý nghĩa hơn. Chúng em biết ơn sự tận tâm và những lần được cô cho chép phạt 15 lần Tri thức Toán, đó là những bài học sâu sắc mà cô đã dành cho lớp, giúp tụi em hiểu sâu bài hơn. Chúc cô luôn mạnh khỏe và giữ mãi ngọn lửa yêu nghề, mãi kute đáng iu như vại cô nhé!"
+      "Cô Thân Thị Phương Trang – giáo viên chủ nhiệm và cũng là giáo viên Toán của chúng em năm lớp 12 – là một trong những người đặc biệt nhất của năm cuối cấp này. Sau một năm lớp 11 với điểm Toán chưa thật sự ổn, chúng em bước vào lớp 12 với khá nhiều lo lắng. Nhưng cô đến như một “cứu tinh” đúng nghĩa. Cô không chỉ dạy kiến thức mà còn giúp chúng em bớt sợ môn Toán, hiểu bài rõ hơn và quan trọng nhất là tin rằng mình có thể làm được. Cô nhỏ nhắn thôi, nhưng lúc nào cũng tràn đầy năng lượng. Cô nhiệt tình với mọi hoạt động của lớp, từ học tập đến phong trào, dù bận thế nào cũng cố gắng thu xếp để đồng hành cùng chúng em."
     ],
-    "storyB": [],
+    "storyB": [
+      "Là giáo viên chủ nhiệm, cô thương lớp rất nhiều, nhưng cũng đủ nghiêm khắc để chúng em không được lơ là. Cả lớp chắc sẽ nhớ mãi câu nói quen thuộc của cô: “Rồi sau chuyện này mình rút ra được kinh nghiệm gì?” Nhờ những chia sẻ đó của cô mà chúng em học được cách nhìn lại bản thân, biết đặt mục tiêu rõ ràng hơn và hiểu rằng mỗi việc xảy ra đều có điều để mình rút kinh nghiệm. Nhờ cô, môn Toán không còn chỉ là những con số khô khan, mà còn là bài học về sự cố gắng và trách nhiệm."
+    ], "storyC": [
+      "Lớp 12 sẽ không thể trọn vẹn như vậy nếu không có cô làm chủ nhiệm. Chúng em thật sự rất quý và rất biết ơn cô."
+    ], "storyD": [], "storyE": [],
     "gallery": [
       { "src": "assets/teachers/12_co_trang/wipe_1.jpg", "cap": "Hội trại", "desc": "Kỷ niệm ngày cắm trại." },
       { "src": "assets/teachers/12_co_trang/wipe_2.jpg", "cap": "Họp PH", "desc": "" },
@@ -59,21 +36,210 @@
       { "src": "assets/teachers/12_co_trang/wipe_5.jpg", "cap": "Kỷ yếu", "desc": "" }
     ]
   },
-  "co-lan": {
-    "name": "Cô Lan",
-    "fullName": "Trần Thị Ngọc Lan",
-    "subject": "Tiếng Anh",
-    "grade": 11,
-    "role": "Giáo viên bộ môn",
-    "quote": "“Speak up — sai cũng được, miễn là dám nói.”",
-    "cover": "assets/teachers/co-lan_cover.jpg",
-    "cutout": "assets/teachers/co-lan_cutout.png",
-    "audio": "assets/teachers/co-lan/voice.mp3",
-    "fig1": { "src": "assets/teachers/co-lan_g1.jpg", "cap": "English Club" },
-    "bigQuote": "“Cô làm tụi em tin rằng mình làm được.”",
-    "bullets": ["Phát âm chuẩn", "Năng lượng tích cực", "Fashionista"],
-    "storyA": ["Tiếng Anh từng là ác mộng với nhiều đứa...", "Nhưng cô đã biến nó thành niềm vui."],
-    "storyB": ["Cảm ơn cô vì những bài học về sự tự tin."],
-    "gallery": [{ "src": "assets/teachers/co-lan_g1.jpg", "cap": "Happy" }]
+
+  "___02_TO_TOAN_HOC___": "=========================================================",
+
+  "thay-khoa": {
+    "name": "Thầy Khoa", "fullName": "Lê Phan Đăng Khoa", "subject": "Toán Học", "grade": [10],
+    "avatar": "assets/logo.png", "role": "Giáo viên Toán Học", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "co-binh": {
+    "name": "Cô Bình", "fullName": "Cô Bình", "subject": "Toán Học", "grade": [11],
+    "avatar": "assets/logo.png", "role": "Giáo viên Toán Học", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "thay-quoc-anh": {
+    "name": "Thầy Quốc Anh", "fullName": "Trần Nguyễn Quốc Anh", "subject": "Toán Học", "grade": [11],
+    "avatar": "assets/logo.png", "role": "Giáo viên Toán Học", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+
+  "___03_TO_NGU_VAN___": "=========================================================",
+
+  "co-duyen": {
+    "name": "Cô Duyên", "fullName": "Phương Duyên", "subject": "Ngữ Văn", "grade": [10],
+    "avatar": "assets/logo.png", "role": "Giáo viên Ngữ Văn", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "co-mai": {
+    "name": "Cô Mai", "fullName": "Phạm Trúc Mai", "subject": "Ngữ Văn", "grade": [11],
+    "avatar": "assets/logo.png", "role": "Giáo viên Ngữ Văn", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "co-thang": {
+    "name": "Cô Thắng", "fullName": "Phạm Thị Năm Thắng", "subject": "Ngữ Văn", "grade": [12],
+    "avatar": "assets/teachers/12_co_thang/avatar.jpg", "role": "Giáo viên Ngữ Văn",
+    "quote": "“12A2 thì mấy bài này dễ, 12A2 thì đề phải khó hơn, 12A2 khác với những lớp khác.”",
+    "cover": "assets/teachers/12_co_thang/anh_hero.png", "cutout": "assets/teachers/12_co_thang_cutout.png", "audio": "",
+    "audioFileName": "REC_24052026.wav", "audioTrackName": "Lời chúc của cô Thắng dành cho 12A2",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {},
+    "bigQuote": "“Cô Thắng ơi, chúng em thật sự rất yêu cô. Mong rằng sau này, nếu có dịp, chúng em vẫn sẽ cùng cô hát thêm nhiều bài hát thật ý nghĩa nữa nhé!”",
+    "bullets": ["Giáo viên dễ thương số 1", "Tâm lý hết nấc"],
+    "storyA": [
+      "Cô Phạm Thị Năm Thắng – giáo viên dạy Văn của chúng em năm lớp 12 – là một trong những người khiến những tiết học cuối cấp trở nên đáng nhớ hơn rất nhiều. Điều khiến chúng em ấn tượng đầu tiên có lẽ là giọng nói của cô. Một chất giọng rất đặc biệt – nghe lạ nhưng lại cực kỳ dễ nghe và cuốn hút. Chúng em thật sự biết ơn vì được nhà trường sắp xếp học cô – một giáo viên rất nhiệt huyết và hết lòng với học sinh."
+    ],
+    "storyB": [
+      "Chúng em chắc sẽ nhớ mãi câu nói quen thuộc của cô: “12A2 thì mấy bài này dễ, 12A2 thì đề phải khó hơn, 12A2 khác với những lớp khác.” Nghe thì tưởng như cô đang “làm khó”, nhưng thật ra đó là cách cô đặt niềm tin vào chúng em. Nhờ những lời nói ấy, chúng em tự tin hơn vào khả năng viết văn của mình, dám nghĩ sâu hơn, viết tốt hơn."
+    ],
+    "storyC": [], "storyD": [], "storyE": [],
+    "gallery": [
+      { "src": "assets/teachers/12_co_thang/wipe_1.jpg", "cap": "Cá thể đáng yêu", "desc": "" },
+      { "src": "assets/teachers/12_co_thang/wipe_2.jpg", "cap": "Đu trend", "desc": "" },
+      { "src": "assets/teachers/12_co_thang/wipe_3.jpg", "cap": "Kỷ niệm 19.11", "desc": "Ngày Quốc tế Phụ Nam 19.11 thật đặc biệt khi cô đã cùng các bạn nữ tạo bất ngờ với vô vàn điều xúc động dành tặng cho các Anh Hi Say Trai." },
+      { "src": "assets/teachers/12_co_thang/wipe_4.jpg", "cap": "Kỷ niệm 20.11", "desc": "" },
+      { "src": "assets/teachers/12_co_thang/wipe_5.jpg", "cap": "Kỷ niệm 20.11", "desc": "Tấm ảnh tập thể của A2K28 cùng cô nhân ngày Nhà giáo Việt Nam 20.11." }
+    ]
+  },
+
+  "___04_TO_TIENG_ANH___": "=========================================================",
+
+  "co-lien": {
+    "name": "Cô Liên", "fullName": "Nguyễn Thị Ngọc Liên", "subject": "Tiếng Anh", "grade": [10],
+    "avatar": "assets/logo.png", "role": "Giáo viên Tiếng Anh", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "co-dung": {
+    "name": "Cô Dung", "fullName": "Nguyễn Thị Ngọc Dung", "subject": "Tiếng Anh", "grade": [11],
+    "avatar": "assets/logo.png", "role": "Giáo viên Tiếng Anh", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "thay-nam-quoc": {
+    "name": "Thầy Quốc", "fullName": "Lê Nam Quốc", "subject": "Tiếng Anh", "grade": [11],
+    "avatar": "assets/logo.png", "role": "Giáo viên Tiếng Anh", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "co-huong": {
+    "name": "Cô Hương", "fullName": "Lê Thị Kim Hương", "subject": "Tiếng Anh", "grade": [12],
+    "avatar": "assets/logo.png", "role": "Giáo viên Tiếng Anh", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+
+  "___05_TO_VAT_LY_HOA_HOC___": "=========================================================",
+
+  "thay-tai": {
+    "name": "Thầy Tài", "fullName": "Hồ Tấn Tài", "subject": "Vật Lý", "grade": [10],
+    "avatar": "assets/logo.png", "role": "Giáo viên Vật Lý", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "co-oanh": {
+    "name": "Cô Oanh", "fullName": "Lê Ngọc Như Oanh", "subject": "Vật Lý", "grade": [11],
+    "avatar": "assets/logo.png", "role": "Giáo viên Vật Lý", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "thay-vo-quoc": {
+    "name": "Thầy Quốc", "fullName": "Trần Võ Nam Quốc", "subject": "Vật Lý", "grade": [11],
+    "avatar": "assets/logo.png", "role": "Giáo viên Vật Lý", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "co-tuyen": {
+    "name": "Cô Tuyên", "fullName": "Nguyễn Thị Kim Tuyên", "subject": "Vật Lý", "grade": [12],
+    "avatar": "assets/logo.png", "role": "Giáo viên Vật Lý", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "thay-danh": {
+    "name": "Thầy Danh", "fullName": "Nguyễn Thành Danh", "subject": "Hóa Học", "grade": [10, 11],
+    "avatar": "assets/logo.png", "role": "Giáo viên Hóa Học", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "co-ha": {
+    "name": "Cô Hà", "fullName": "Lê Thu Hà", "subject": "Hóa Học", "grade": [12],
+    "avatar": "assets/logo.png", "role": "Giáo viên Hóa Học", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+
+  "___06_TO_DIA_LY_LICH_SU___": "=========================================================",
+
+  "thay-dung": {
+    "name": "Thầy Dũng", "fullName": "Thầy Dũng", "subject": "Địa Lý", "grade": [10],
+    "avatar": "assets/logo.png", "role": "Giáo viên Địa Lý", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "thay-tuan": {
+    "name": "Thầy Tuấn", "fullName": "Lê Anh Tuấn", "subject": "Địa Lý", "grade": [12],
+    "avatar": "assets/logo.png", "role": "Giáo viên Địa Lý", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "co-dao": {
+    "name": "Cô Đào", "fullName": "Bùi Thị Đào", "subject": "Lịch Sử", "grade": [10, 11],
+    "avatar": "assets/logo.png", "role": "Giáo viên Lịch Sử", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "co-hanh": {
+    "name": "Cô Hạnh", "fullName": "Huỳnh Hồng Hạnh", "subject": "Lịch Sử", "grade": [12],
+    "avatar": "assets/logo.png", "role": "Giáo viên Lịch Sử", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+
+  "___07_TO_TIN_CONG_NGHE___": "=========================================================",
+
+  "thay-suyen": {
+    "name": "Thầy Suyền", "fullName": "Tôn Thất Suyền", "subject": "Tin Học", "grade": [10, 11, 12],
+    "avatar": "assets/teachers/10_11_12_thay_suyen/avatar.jpg", "role": "Giáo viên Tin Học",
+    "quote": "“Tụi em hiểu chưa, thầy nói lại lần nữa nè nghe kĩ nha!”",
+    "cover": "assets/teachers/10_11_12_thay_suyen/anh_hero.png", "cutout": "assets/teachers/10_11_12_thay_suyen_cutout.png",
+    "audio": "assets/teachers/10_11_12_thay_suyen/voice.mp3", "audioFileName": "REC_31912209.wav",
+    "fig1": { "src": "assets/intro/intro-memories.mp4", "cap": "Một chiều mưa 12A2..." },
+    "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {},
+    "bigQuote": "“Chúc thầy luôn mạnh khỏe, hạnh phúc và tiếp tục giữ mãi ngọn lửa đam mê với nghề.”",
+    "bullets": ["Thương học sinh", "Tâm lý hết nấc", "Đẹp trai s1tg!"],
+    "storyA": [
+      "Thầy Suyền là giáo viên Tin học đã đồng hành suốt 3 năm cấp ba cùng lớp chúng em. Trong khoảng thời gian ấy, thầy luôn giữ trọn sự nhiệt huyết, mang đến những giờ học vừa bổ ích vừa thoải mái. Thầy giảng bài cẩn thận, dễ hiểu và không ngại dành thêm thời gian để hướng dẫn lại khi chúng em còn bỡ ngỡ."
+    ],
+    "storyB": [
+      "Không chỉ truyền đạt kiến thức, thầy còn khuyến khích chúng em chủ động tìm tòi, sáng tạo và mạnh dạn thử sức với những điều mới. Thầy luôn động viên khi chúng em gặp khó khăn và âm thầm dõi theo sự tiến bộ của từng bạn trong lớp."
+    ],
+    "storyC": [
+      "Ba năm trôi qua với biết bao kỷ niệm, chúng em thật sự trân trọng sự đồng hành của thầy. Chúng em biết ơn vì đã có một người thầy tận tâm như vậy trong những năm tháng quan trọng của tuổi học trò."
+    ],
+    "storyD": [], "storyE": [],
+    "gallery": [
+      { "src": "assets/teachers/10_11_12_thay_suyen/wipe_1.jpg", "cap": "Hội trại", "desc": "Kỷ niệm ngày cắm trại." },
+      { "src": "assets/teachers/10_11_12_thay_suyen/wipe_2.jpg", "cap": "Họp PH", "desc": "" },
+      { "src": "assets/teachers/10_11_12_thay_suyen/wipe_3.jpg", "cap": "Chụp lén", "desc": "" },
+      { "src": "assets/teachers/10_11_12_thay_suyen/wipe_4.jpg", "cap": "Tổng kết", "desc": "" },
+      { "src": "assets/teachers/10_11_12_thay_suyen/wipe_5.jpg", "cap": "Kỷ yếu", "desc": "" }
+    ]
+  },
+  "thay-thai": {
+    "name": "Thầy Thái", "fullName": "Đinh Quốc Thái", "subject": "Công Nghệ", "grade": [10],
+    "avatar": "assets/logo.png", "role": "Giáo viên Công Nghệ", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "thay-cuong": {
+    "name": "Thầy Cường", "fullName": "Võ Văn Cường", "subject": "Công Nghệ", "grade": [11, 12],
+    "avatar": "assets/logo.png", "role": "Giáo viên Công Nghệ", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+
+  "___08_TO_THE_DUC_QPAN___": "=========================================================",
+
+  "thay-khang": {
+    "name": "Thầy Khang", "fullName": "Nguyễn Duy Khang", "subject": "Thể Dục", "grade": [10, 11, 12],
+    "avatar": "assets/logo.png", "role": "Giáo viên Thể Dục", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "co-men": {
+    "name": "Cô Mến", "fullName": "Trần Thị Triều Mến", "subject": "QP - AN", "grade": [10, 11],
+    "avatar": "assets/logo.png", "role": "Giáo viên QP - AN", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "thay-son": {
+    "name": "Thầy Sơn", "fullName": "Nguyễn Thanh Sơn", "subject": "QP - AN", "grade": [12],
+    "avatar": "assets/logo.png", "role": "Giáo viên QP - AN", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+
+  "___09_TO_KINH_TE_PHAP_LUAT___": "=========================================================",
+
+  "thay-phuong": {
+    "name": "Cô Phương", "fullName": "Lý Hoàng Phương", "subject": "Kinh Tế - PL", "grade": [10, 12],
+    "avatar": "assets/logo.png", "role": "Giáo viên Kinh Tế Pháp Luật", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
+  },
+  "co-chau": {
+    "name": "Cô Châu", "fullName": "Ngô Bảo Châu", "subject": "Kinh Tế - PL", "grade": [11],
+    "avatar": "assets/logo.png", "role": "Giáo viên Kinh Tế Pháp Luật", "quote": "", "cover": "", "cutout": "", "audio": "",
+    "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "", "bullets": [], "storyA": [], "gallery": []
   }
 }
