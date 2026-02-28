@@ -143,18 +143,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const bgMusic = document.getElementById("bg-music");
             if (bgMusic) {
-                bgMusic.volume = 0.2;
+                bgMusic.volume = 0.2; // Volume nhỏ
                 
-                // Thử phát nhạc
                 bgMusic.play().catch(e => {
                     console.log("Trình duyệt chặn autoplay. Chờ tương tác từ người dùng...");
                     
-                    // Mẹo: Trình duyệt hiện nay rất gắt, nếu người xem KHÔNG ấn nút "Vào lớp ngay" 
-                    // mà cứ để Intro tự chạy hết, nó sẽ cấm phát nhạc vì "chưa có tương tác".
-                    // Đoạn code dưới đây sẽ "rình": Chỉ cần họ ấn bất kỳ đâu trên web (cuộn, click nút) là nhạc nổi lên liền.
                     document.body.addEventListener('click', function playOnInteraction() {
                         bgMusic.play();
-                        document.body.removeEventListener('click', playOnInteraction); // Chạy 1 lần rồi xóa
+                        document.body.removeEventListener('click', playOnInteraction); 
                     }, { once: true });
                 });
             }
