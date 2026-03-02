@@ -73,7 +73,7 @@
 
   "thay-khoa": {
     "name": "Thầy Khoa", "fullName": "Lê Phan Đăng Khoa", "subject": "Toán Học", "grade": [10],
-    "avatar": "assets/logo.png", "role": "Giáo viên Toán Học", 
+    "avatar": "assets/teachers/10_thay_khoa/avatar.jpg", "role": "Giáo viên Toán Học", 
     "quote": "“Để thầy tịnh tiến điểm cho nhaaa!”", 
     "cover": "assets/teachers/10_thay_khoa/anh_hero.jpg", "cutout": "", "audio": "", "audioFileName": "", "audioTrackName": "",
     "fig1": { "src": "assets/teachers/10_thay_khoa/fig1.mp4", "cap": "Cả lớp cùng thầy Khoa đón sinh nhật <3" }, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -92,7 +92,7 @@
   },
   "co-binh": {
     "name": "Cô Bình", "fullName": "Hoàng Hải Bình", "subject": "Toán Học", "grade": [11],
-    "avatar": "assets/logo.png", "role": "Giáo viên Toán Học", 
+    "avatar": "assets/teachers/11_co_binh/avatar.jpg", "role": "Giáo viên Toán Học", 
     "quote": "“Có những người lái đò chỉ đồng hành một chặng ngắn, nhưng đủ để đặt nền móng cho cả một hành trình dài.”", 
     "cover": "assets/teachers/11_co_binh/anh_hero.png", "cutout": "", "audio": "", "audioFileName": "", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -107,7 +107,7 @@
   },
   "thay-quoc-anh": {
     "name": "Thầy Quốc Anh", "fullName": "Trần Nguyễn Quốc Anh", "subject": "Toán Học", "grade": [11],
-    "avatar": "assets/logo.png", "role": "Giáo viên Toán Học", 
+    "avatar": "assets/teachers/11_thay_quoc_anh/avatar.jpg", "role": "Giáo viên Toán Học", 
     "quote": "“Hiểu thật vững hôm nay để tự tin bước tiếp ngày mai.”", 
     "cover": "assets/teachers/11_thay_quoc_anh/anh_hero.png", "cutout": "", "audio": "", "audioFileName": "", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -126,7 +126,7 @@
 
   "co-duyen": {
     "name": "Cô Duyên", "fullName": "Nguyễn Phương Duyên", "subject": "Ngữ Văn", "grade": [10],
-    "avatar": "assets/logo.png", "role": "Giáo viên Ngữ Văn", 
+    "avatar": "assets/teachers/10_co_duyen/avatar.jpg", "role": "Giáo viên Ngữ Văn", 
     "quote": "“Tụi em chép phạt 15 lần Tri thức Ngữ Văn trang 20 nha, mai hông nộp thì tăng lên 20 lần”", 
     "cover": "assets/teachers/10_co_duyen/anh_hero.png", "cutout": "", "audio": "assets/teachers/10_co_duyen/voice.mp3", "audioFileName": "REC_30012026.wav", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -144,7 +144,7 @@
   },
   "co-mai": {
     "name": "Cô Mai", "fullName": "Phạm Trúc Mai", "subject": "Ngữ Văn", "grade": [11],
-    "avatar": "assets/logo.png", "role": "Giáo viên Ngữ Văn", 
+    "avatar": "assets/teachers/11_co_mai/avatar.jpg", "role": "Giáo viên Ngữ Văn", 
     "quote": "“Hello mấy bé, mấy bé ráng học chăm nhaa!”", 
     "cover": "assets/teachers/11_co_mai/anh_hero.png", "cutout": "", "audio": "assets/teachers/11_co_mai/voice.mp3", "audioFileName": "REC_11052026.wav", "audioTrackName": "Lời chúc của cô Mai dành cho 12A2",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -187,7 +187,7 @@
 
   "co-lien": {
     "name": "Cô Liên", "fullName": "Nguyễn Thị Ngọc Liên", "subject": "Tiếng Anh", "grade": [10],
-    "avatar": "assets/logo.png", "role": "Giáo viên Tiếng Anh", 
+    "avatar": "assets/teachers/10_co_lien/avatar.jpg", "role": "Giáo viên Tiếng Anh", 
     "quote": "“Mấy đứa đi thi nhớ cẩn thận bài làm nhee!”", "cover": "assets/teachers/10_co_lien/anh_hero.jpg", "cutout": "", "audio": "assets/teachers/10_co_lien/voice.mp3", "audioFileName": "REC_20112023.wav", "audioTrackName": "",
     "fig1": {"src": "assets/teachers/10_co_lien/fig1.JPG", "cap": "Một ngày Phụ nữ Việt Nam thật hạnh phúc cùng cô Liên và các bạn nữ."}, "fig2": { "src": "assets/teachers/10_co_lien/fig2.jpg", "cap": "Cả lớp cùng cô chụp ảnh lưu niệm."}, "fig3": {}, "fig4": {}, "fig5": {}, 
     "bigQuote": "Những bài học cùng cô sẽ luôn là một phần đáng nhớ của năm lớp 10. Cảm ơn cô vì đã đồng hành cùng lớp bằng tất cả sự tận tâm và yêu thương.", 
@@ -208,7 +208,7 @@
   },
   "co-dung": {
     "name": "Cô Dung", "fullName": "Nguyễn Thị Ngọc Dung", "subject": "Tiếng Anh", "grade": [11],
-    "avatar": "assets/logo.png", "role": "Giáo viên Tiếng Anh", 
+    "avatar": "assets/teachers/11_co_dung/avatar.jpg", "role": "Giáo viên Tiếng Anh", 
     "quote": "“One star for you, one scar for you!”", 
     "cover": "assets/teachers/11_co_dung/anh_hero.png", "cutout": "", "audio": "assets/teachers/11_co_dung/voice.mp3", "audioFileName": "REC_08032025", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -223,7 +223,7 @@
   },
   "thay-nam-quoc": {
     "name": "Thầy Quốc", "fullName": "Lê Nam Quốc", "subject": "Tiếng Anh", "grade": [11],
-    "avatar": "assets/logo.png", "role": "Giáo viên Tiếng Anh", 
+    "avatar": "assets/teachers/11_thay_nam_quoc/avatar.jpg", "role": "Giáo viên Tiếng Anh", 
     "quote": "“Các em chú ý, nhìn dễ vậy thôi chứ làm là dễ sai á!”", 
     "cover": "assets/teachers/11_thay_nam_quoc/anh_hero.png", "cutout": "", "audio": "assets/teachers/11_thay_nam_quoc/voice.mp3", "audioFileName": "REC_19112024", "audioTrackName": "",
     "fig1": {"src": "assets/teachers/11_thay_nam_quoc/fig1.jpg", "cap": "Câu lạc bộ Tiếng Anh (HVEC) chúc mừng thầy nhân ngày Nhà giáo Việt Nam."}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -243,7 +243,7 @@
   },
   "co-huong": {
     "name": "Cô Hương", "fullName": "Lê Thị Kim Hương", "subject": "Tiếng Anh", "grade": [12],
-    "avatar": "assets/logo.png", "role": "Giáo viên Tiếng Anh", 
+    "avatar": "assets/teachers/12_co_huong/avatar.jpg", "role": "Giáo viên Tiếng Anh", 
     "quote": "“Con cho cô biết, từ này nghĩa là gì”", 
     "cover": "assets/teachers/12_co_huong/anh_hero.png", "cutout": "", "audio": "", "audioFileName": "", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -266,7 +266,7 @@
 
   "thay-tai": {
     "name": "Thầy Tài", "fullName": "Hồ Tấn Tài", "subject": "Vật Lý", "grade": [10],
-    "avatar": "assets/logo.png", "role": "Giáo viên Vật Lý", 
+    "avatar": "assets/teachers/10_thay_tai/avatar.jpg", "role": "Giáo viên Vật Lý", 
     "quote": "“Lớp này học hay ha, đề kêu tính số vòng trên phút mà đi tính chu kì.”", 
     "cover": "assets/teachers/10_thay_tai/anh_hero.JPG", "cutout": "", "audio": "assets/teachers/10_thay_tai/voice.mp3", "audioFileName": "REC_01062024.wav", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -284,7 +284,7 @@
   },
   "co-oanh": {
     "name": "Cô Oanh", "fullName": "Lê Ngọc Như Oanh", "subject": "Vật Lý", "grade": [11],
-    "avatar": "assets/logo.png", "role": "Giáo viên Vật Lý", 
+    "avatar": "assets/teachers/11_co_oanh/avatar.jpg", "role": "Giáo viên Vật Lý", 
     "quote": "“Hiểu đúng bản chất, mọi điều phức tạp rồi cũng trở nên đơn giản.”", 
     "cover": "assets/teachers/11_co_oanh/anh_hero.png", "cutout": "", "audio": "", "audioFileName": "", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -301,7 +301,7 @@
   },
   "thay-vo-quoc": {
     "name": "Thầy Quốc", "fullName": "Trần Võ Nam Quốc", "subject": "Vật Lý", "grade": [11],
-    "avatar": "assets/logo.png", "role": "Giáo viên Vật Lý", 
+    "avatar": "assets/teachers/11_thay_vo_quoc/avatar.jpg", "role": "Giáo viên Vật Lý", 
     "quote": "“Học bài nè mấy nhỏ!”", 
     "cover": "assets/teachers/11_thay_vo_quoc/anh_hero.png", "cutout": "", "audio": "assets/teachers/11_thay_vo_quoc/voice.mp3", "audioFileName": "REC_36368386", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -317,7 +317,7 @@
   },
   "co-tuyen": {
     "name": "Cô Tuyên", "fullName": "Nguyễn Thị Kim Tuyên", "subject": "Vật Lý", "grade": [12],
-    "avatar": "assets/logo.png", "role": "Giáo viên Vật Lý", 
+    "avatar": "assets/teachers/12_co_tuyen/avatar.jpg", "role": "Giáo viên Vật Lý", 
     "quote": "“Sao vô cái lớp này thời gian trôi qua nhanh thế?”", 
     "cover": "assets/teachers/12_co_tuyen/anh_hero.png", "cutout": "", "audio": "", "audioFileName": "", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -340,7 +340,7 @@
   },
   "thay-danh": {
     "name": "Thầy Danh", "fullName": "Nguyễn Thành Danh", "subject": "Hóa Học", "grade": [10, 11],
-    "avatar": "assets/logo.png", "role": "Giáo viên Hóa Học", 
+    "avatar": "assets/teachers/10_11_thay_danh/avatar.jpg", "role": "Giáo viên Hóa Học", 
     "quote": "“Câu nào hỏng hiểu nhắn thầy, về thầy chỉ cho nha!”", 
     "cover": "assets/teachers/10_11_thay_danh/anh_hero.jpg", "cutout": "", "audio": "", "audioFileName": "", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -358,7 +358,7 @@
   },
   "co-ha": {
     "name": "Cô Hà", "fullName": "Lê Thu Hà", "subject": "Hóa Học", "grade": [12],
-    "avatar": "assets/logo.png", "role": "Giáo viên Hóa Học", 
+    "avatar": "assets/teachers/12_co_ha/avatar.jpg", "role": "Giáo viên Hóa Học", 
     "quote": "“Nghiêm khắc một chút, vững kiến thức thật nhiều.”", 
     "cover": "assets/teachers/12_co_ha/anh_hero.png", "cutout": "", "audio": "", "audioFileName": "", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -381,7 +381,7 @@
 
   "thay-dung": {
     "name": "Thầy Dũng", "fullName": "Lê Quốc Dũng", "subject": "Địa Lý", "grade": [10],
-    "avatar": "assets/logo.png", "role": "Giáo viên Địa Lý", 
+    "avatar": "assets/teachers/10_thay_dung/avatar.jpg", "role": "Giáo viên Địa Lý", 
     "quote": "“Nghề giáo là nghề cao quý nhất trong các nghề cao quý.”", "cover": "assets/teachers/10_thay_dung/anh_hero.jpg", "cutout": "", "audio": "assets/teachers/10_thay_dung/voice.mp3", "audioFileName": "REC_23082024.wav", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {},
     "bigQuote": "“Cảm ơn thầy vì đã đồng hành cùng lớp bằng sự nhiệt tình và nguồn năng lượng tích cực đáng quý ấy!”", 
@@ -394,8 +394,8 @@
   },
   "thay-tuan": {
     "name": "Thầy Tuấn", "fullName": "Lê Anh Tuấn", "subject": "Địa Lý", "grade": [12],
-    "avatar": "assets/logo.png", "role": "Giáo viên Địa Lý", 
-    "quote": "", "cover": "", "cutout": "", "audio": "", "audioFileName": "", "audioTrackName": "",
+    "avatar": "assets/teachers/12_thay_tuan/avatar.jpg", "role": "Giáo viên Địa Lý", 
+    "quote": "", "cover": "assets/teachers/12_thay_tuan/anh_hero.jpg", "cutout": "", "audio": "", "audioFileName": "", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
     "bigQuote": "", 
     "bullets": [], 
@@ -404,7 +404,7 @@
   },
   "co-dao": {
     "name": "Cô Đào", "fullName": "Bùi Thị Đào", "subject": "Lịch Sử", "grade": [10, 11],
-    "avatar": "assets/logo.png", "role": "Giáo viên Lịch Sử", 
+    "avatar": "assets/teachers/10_11_co_dao/avatar.jpg", "role": "Giáo viên Lịch Sử", 
     "quote": "“Hôm nay cô mới tìm được video Lịch Sử hay lắm, cả lớp coi chung nha.”", 
     "cover": "assets/teachers/10_11_co_dao/anh_hero.png", "cutout": "", "audio": "assets/teachers/10_11_co_dao/voice.mp3", "audioFileName": "REC_25122024.wav", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -419,7 +419,7 @@
   },
   "co-hanh": {
     "name": "Cô Hạnh", "fullName": "Huỳnh Hồng Hạnh", "subject": "Lịch Sử", "grade": [12],
-    "avatar": "assets/logo.png", "role": "Giáo viên Lịch Sử", 
+    "avatar": "assets/teachers/12_co_hanh/avatar.jpg", "role": "Giáo viên Lịch Sử", 
     "quote": "“Nhẹ nhàng thôi, nhưng đủ để Lịch sử in sâu.”", 
     "cover": "assets/teachers/12_co_hanh/anh_hero.png", "cutout": "", "audio": "assets/teachers/12_co_hanh/voice.mp3", "audioFileName": "REC_12022026.wav", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -476,7 +476,7 @@
   },
   "thay-thai": {
     "name": "Thầy Thái", "fullName": "Đinh Quốc Thái", "subject": "Công Nghệ", "grade": [10],
-    "avatar": "assets/logo.png", "role": "Giáo viên Công Nghệ", 
+    "avatar": "assets/teachers/10_thay_thai/avatar.jpg", "role": "Giáo viên Công Nghệ", 
     "quote": "“Mới sáng sớm, thầy có một bài tập khởi động, cả lớp khởi động với thầy nhaaa!”", 
     "cover": "assets/teachers/10_thay_thai/anh_hero.jpg", "cutout": "", "audio": "", "audioFileName": "", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -494,7 +494,7 @@
   },
   "thay-cuong": {
     "name": "Thầy Cường", "fullName": "Võ Văn Cường", "subject": "Công Nghệ", "grade": [11, 12],
-    "avatar": "assets/logo.png", "role": "Giáo viên Công Nghệ", 
+    "avatar": "assets/teachers/11_12_thay_cuong/avatar.jpg", "role": "Giáo viên Công Nghệ", 
     "quote": "“Trên thế giới này có 3 loại người: Người giàu, người nghèo, và kĩ sư cơ khí.”", 
     "cover": "assets/teachers/11_12_thay_cuong/anh_hero.png", "cutout": "", "audio": "", "audioFileName": "", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -513,7 +513,7 @@
 
   "thay-khang": {
     "name": "Thầy Khang", "fullName": "Nguyễn Duy Khang", "subject": "Thể Dục", "grade": [10, 11, 12],
-    "avatar": "assets/logo.png", "role": "Giáo viên Thể Dục", 
+    "avatar": "assets/teachers/10_11_12_thay_khang/avatar.jpg", "role": "Giáo viên Thể Dục", 
     "quote": "“Muốn uống gì ra quán gọi đi, chút về thầy thanh toán cho!”", 
     "cover": "assets/teachers/10_11_12_thay_khang/anh_hero.png", "cutout": "", "audio": "assets/teachers/10_11_12_thay_khang/voice.mp3", "audioFileName": "REC_25022026", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -539,7 +539,7 @@
   },
   "co-men": {
     "name": "Cô Mến", "fullName": "Trần Thị Triều Mến", "subject": "Quốc Phòng - An Ninh", "grade": [10, 11],
-    "avatar": "assets/logo.png", "role": "Giáo viên Quốc phòng - An ninh", 
+    "avatar": "assets/teachers/10_11_co_men/avatar.jpg", "role": "Giáo viên Quốc phòng - An ninh", 
     "quote": "“Một bước đi - ba bước chạy”", 
     "cover": "assets/teachers/10_11_co_men/anh_hero.png", "cutout": "", "audio": "assets/teachers/10_11_co_men/voice.mp3", "audioFileName": "REC_31122024.wav", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -553,7 +553,7 @@
   },
   "thay-son": {
     "name": "Thầy Sơn", "fullName": "Nguyễn Thanh Sơn", "subject": "Quốc Phòng - An Ninh", "grade": [12],
-    "avatar": "assets/logo.png", "role": "Giáo viên Quốc phòng - An ninh", 
+    "avatar": "assets/teachers/12_thay_son/avatar.jpg", "role": "Giáo viên Quốc phòng - An ninh", 
     "quote": "“Giỏi không? Vỗ tay”", 
     "cover": "assets/teachers/12_thay_son/anh_hero.png", "cutout": "", "audio": "", "audioFileName": "", "audioTrackName": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, 
@@ -574,7 +574,7 @@
 
 "thay-phuong": {
   "name": "Thầy Phương", "fullName": "Lý Hoàng Phương", "subject": "Kinh Tế - Pháp Luật", "grade": [10, 12],
-  "avatar": "assets/logo.png", "role": "Giáo viên Kinh tế - Pháp luật", "quote": "“Môn này ứng dụng nhiều nên tập trung nghe nha tụi em.”", "cover": "assets/teachers/10_12_thay_phuong/anh_hero.png", "cutout": "", "audio": "", "audioFileName": "", "audioTrackName": "",
+  "avatar": "assets/teachers/10_12_thay_phuong/avatar.jpg", "role": "Giáo viên Kinh tế - Pháp luật", "quote": "“Môn này ứng dụng nhiều nên tập trung nghe nha tụi em.”", "cover": "assets/teachers/10_12_thay_phuong/anh_hero.png", "cutout": "", "audio": "", "audioFileName": "", "audioTrackName": "",
   "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "“Chúng em sẽ mãi trân trọng những năm tháng được học cùng thầy.”", 
   "bullets": ["Người thầy mẫu mực", "Truyền đạt kiến thức rất thực tế"], 
   "storyA": ["Thầy Phương - giáo viên môn Kinh tế và Pháp luật đã đồng hành cùng lớp ở năm 10 và 12, thầy luôn mang đến những bài học thiết thực và ý nghĩa về trách nhiệm và cách sống đúng đắn. Những điều thầy chia sẻ không chỉ dừng lại trong sách vở mà còn theo chúng em ra ngoài cuộc sống. Chúng em thật sự biết ơn vì sự tận tâm và những điều thầy đã dành cho lớp. Mong thầy luôn giữ gìn sức khỏe, nghỉ ngơi thật nhiều và luôn bình an."], 
@@ -585,7 +585,7 @@
 },
   "co-chau": {
     "name": "Cô Châu", "fullName": "Ngô Bảo Châu", "subject": "Kinh Tế - Pháp Luật", "grade": [11],
-    "avatar": "assets/logo.png", "role": "Giáo viên Kinh Tế Pháp Luật", "quote": "“Giáo viên là những người kiến ​​tạo tương lai của chúng ta.”", "cover": "assets/teachers/11_co_chau/anh_hero.png", "cutout": "", "audio": "",
+    "avatar": "assets/teachers/11_co_chau/avatar.jpg", "role": "Giáo viên Kinh Tế Pháp Luật", "quote": "“Giáo viên là những người kiến ​​tạo tương lai của chúng ta.”", "cover": "assets/teachers/11_co_chau/anh_hero.png", "cutout": "", "audio": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "“Mong cô luôn giữ gìn sức khỏe, nghỉ ngơi thật nhiều và luôn bình an.”", "bullets": [], "storyA": ["Cô Châu là giáo viên môn KTPL lớp 11 của chúng em. Cô là người luôn dạy học với sự chỉn chu và tinh thần trách nhiệm cao. Trong mỗi tiết học, cô chuẩn bị bài rất kỹ và giải thích từng nội dung một cách rõ ràng, mạch lạc. Những kiến thức tưởng như khô khan về kinh tế hay pháp luật qua cách cô giảng lại trở nên gần gũi hơn khi được gắn với những tình huống thực tế trong cuộc sống. Nhờ vậy, tụi em không chỉ hiểu bài mà còn thấy môn học có ý nghĩa và cần thiết hơn đối với bản thân."], "storyB": ["Không chỉ dừng lại ở việc truyền đạt kiến thức, cô còn giúp chúng em học cách suy nghĩ chín chắn và nhìn nhận vấn đề một cách khách quan hơn. Những câu hỏi cô đặt ra trong lớp thường khiến tụi em phải suy nghĩ kỹ trước khi trả lời, từ đó rèn được sự cẩn trọng và trách nhiệm với lời nói của mình. Tụi em thật sự trân trọng và biết ơn những gì cô đã dành cho lớp trong suốt năm học này."], "gallery": [
     { "src": "assets/teachers/11_co_chau/wipe_1.jpg", "cap": "Cô Châu", "desc": "" },
     { "src": "assets/teachers/11_co_chau/wipe_2.jpg", "cap": "Cô Châu x2", "desc": "" }

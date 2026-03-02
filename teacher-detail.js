@@ -206,6 +206,63 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
+        // ==========================================
+        // RENDER DANH SÁCH GIÁO VIÊN THEO KHỐI LỚP
+        // ==========================================
+        const teacherGridContainer = $(".tl-content"); 
+        
+        if (teacherGridContainer && TEACHERS) {
+            // Chuẩn bị 3 mảng để chứa giáo viên cho từng khối
+            const grade10 = [];
+            const grade11 = [];
+            const grade12 = [];
+
+            // Lọc dữ liệu
+            for (const [key, t] of Object.entries(TEACHERS)) {
+                // Bỏ qua các dòng tiêu đề tổ bộ môn (có chữ ___)
+                if (key.startsWith("___") || !t.name) continue;
+
+                // Xác định trạng thái active
+                const isActive = key === id ? "active" : "";
+                const avatarSrc = t.avatar || t.cover || "assets/fallback.jpg";
+                const tapeRot = (Math.random() * 6 - 3).toFixed(1); // Xoay băng keo ngẫu nhiên
+
+                const cardHtml = `
+                    <a href="teacher-detail.html?id=${key}" class="tl-card ${isActive} hover-target" style="--r: ${tapeRot}deg">
+                        <img src="${avatarSrc}" class="tl-avatar" alt="${t.name}">
+                        <div class="tl-info">
+                            <span class="tl-name">${t.name}</span>
+                            <span class="tl-sub">${t.subject}</span>
+                        </div>
+                    </a>
+                `;
+
+                // Phân loại vào các khối (Nếu mảng grade có số 10 thì đẩy vào grade10...)
+                if (t.grade && Array.isArray(t.grade)) {
+                    if (t.grade.includes(10)) grade10.push(cardHtml);
+                    if (t.grade.includes(11)) grade11.push(cardHtml);
+                    if (t.grade.includes(12)) grade12.push(cardHtml);
+                }
+            }
+
+            // Hàm tạo HTML cho một khối
+            const buildGroupHtml = (title, icon, cardsArray) => {
+                if (cardsArray.length === 0) return "";
+                return `
+                    <h4 class="tl-group-title"><i class="${icon}"></i> ${title}</h4>
+                    <div class="tl-grid">${cardsArray.join("")}</div>
+                `;
+            };
+
+            // Ghép toàn bộ lại
+            let finalHtml = "";
+            finalHtml += buildGroupHtml("Khối 10: Bỡ Ngỡ", "fa-solid fa-seedling", grade10);
+            finalHtml += buildGroupHtml("Khối 11: Trưởng Thành", "fa-solid fa-leaf", grade11);
+            finalHtml += buildGroupHtml("Khối 12: Mùa Hạ Cuối", "fa-solid fa-tree", grade12);
+
+            teacherGridContainer.innerHTML = finalHtml;
+        }
+
         // Khởi động các Animation phụ thuộc vào data
         runIntro(data); // Phải pass data vào để nó lấy ảnh làm intro
     })
@@ -408,11 +465,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- INTRO ANIMATION ---
   const runIntro = (data) => {
     const introSection = $("#introSection");
-    const stripsContainer = $("#introStrips"); // Đã thêm ID này vào HTML ở Bước 1
+    const stripsContainer = $("#introStrips"); 
     const heroContent = $(".hero-center-layer");
     const cutout = $(".hero-right");
 
-    // Nếu trang không có intro section hoặc strips container thì bỏ qua
     if (!introSection || !stripsContainer) {
       initHeroScroll();
       initReveals();
@@ -423,80 +479,58 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.set([".fixed-nav", "#heroDetailLayer"], { opacity: 0, visibility: "hidden", pointerEvents: "none" });
     gsap.set(".fixed-nav", { y: -20 });
 
-    const stripCount = 6; // Số lượng ảnh muốn xuất hiện trong Intro
+    const stripCount = 6; 
     let sourceImages = [];
 
-    // Lấy ảnh từ gallery
     if (data.gallery && data.gallery.length > 0) {
-        sourceImages = data.gallery.filter(g => !g.src.match(/\.(mp4|webm|ogg|mov)$/i)).map(g => g.src); // Chỉ lấy ảnh, bỏ qua video
+        sourceImages = data.gallery.filter(g => !g.src.match(/\.(mp4|webm|ogg|mov)$/i)).map(g => g.src); 
     }
-    
-    // Nếu chưa đủ 5 ảnh, bổ sung thêm từ cover, fig1, fig2...
     if (sourceImages.length < stripCount) {
          const extraImages = [data.cover, data.fig1?.src, data.fig2?.src, data.fig3?.src].filter(Boolean);
          sourceImages = [...sourceImages, ...extraImages];
     }
-    
-    // Nếu vẫn không có ảnh nào (giáo viên chưa có data), dùng logo làm mặc định
-    if (sourceImages.length === 0) {
-        sourceImages = ["assets/fallback.jpg"];
-    }
+    if (sourceImages.length === 0) sourceImages = ["assets/fallback.jpg"];
 
-    // Xóa rỗng container trước khi chèn để tránh bị lặp ảnh
     stripsContainer.innerHTML = "";
     const stripImgs = [];
     
-    // Tạo và chèn các thẻ <img> vào DOM
     for (let i = 0; i < stripCount; i++) {
       const img = document.createElement("img");
-      // Lấy ảnh tuần tự, lặp lại nếu hết mảng
       img.src = sourceImages[i % sourceImages.length]; 
-      
-      // Thêm fallback nếu đường dẫn ảnh bị lỗi
-      img.onerror = function() {
-          this.src = 'assets/fallback.jpg';
-      };
-
-      gsap.set(img, { scale: 1.2 }); // Set trạng thái ban đầu cho GSAP
+      img.onerror = function() { this.src = 'assets/fallback.jpg'; };
+      gsap.set(img, { scale: 1.2 }); 
       stripsContainer.appendChild(img);
       stripImgs.push(img);
     }
 
-    // Định nghĩa timeline animation
     const tl = gsap.timeline({
       defaults: { ease: "power3.inOut" },
       onComplete: () => {
         document.body.classList.remove("is-locked");
-        
-        // Ẩn mượt mà phần Intro thay vì display: none ngay lập tức
         gsap.to(introSection, {
-            autoAlpha: 0,
-            duration: 1,
-            ease: "power2.out",
-            onComplete: () => introSection.remove() // Xóa hẳn khỏi DOM cho nhẹ
+            autoAlpha: 0, duration: 1, ease: "power2.out",
+            onComplete: () => introSection.remove() 
         });
-
         initHeroScroll();
         initReveals();
         ScrollTrigger.refresh();
       }
     });
 
-    // Ẩn hero content lúc đầu
     tl.set([heroContent, cutout].filter(Boolean), { opacity: 0, y: 30 });
 
-    // Hiệu ứng Intro
+    // ĐÃ SỬA: Rút ngắn thời gian chờ xé ảnh từ 9s -> 5s
     tl.to(stripImgs, { 
-        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", // Mở rộng ảnh (bạn có thể cần chỉnh CSS clip-path ban đầu nếu dùng cái này)
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", 
         duration: 1.2, 
         ease: "power4.inOut", 
         stagger: 0.25, 
-        delay: 9 // Chờ preloader chạy xong (như logic cũ của bạn)
+        delay: 5 
     }, 0) 
-    .to(stripImgs, { scale: 1, duration: 3, ease: "power3.inOut", delay: 9 }, 0)
+    .to(stripImgs, { scale: 1, duration: 3, ease: "power3.inOut", delay: 5 }, 0)
     
-    // Hiện Hero content sau khi Intro xong
-    .to([heroContent, cutout].filter(Boolean), { opacity: 1, y: 0, duration: 1.5, stagger: 0.2, ease: "power3.out" }, 10.5); 
+    // ĐÃ SỬA: Hiện Text và Hình thầy cô từ 10.5s -> 6.5s
+    .to([heroContent, cutout].filter(Boolean), { opacity: 1, y: 0, duration: 1.5, stagger: 0.2, ease: "power3.out" }, 6.5); 
   };
 
   // --- TO TOP ---
@@ -646,58 +680,46 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!one) return;
       const numHeight = one.clientHeight;
       const totalDistance = (digit.querySelectorAll(".num").length - 1) * numHeight;
-
-      gsap.to(digit, {
-        y: -totalDistance,
-        duration,
-        delay,
-        ease: "power2.inOut",
-      });
+      gsap.to(digit, { y: -totalDistance, duration, delay, ease: "power2.inOut" });
     }
 
-    animateDigit(digit3, 5);
-    animateDigit(digit2, 6);
-    animateDigit(digit1, 2, 5);
+    // ĐÃ SỬA: Số quay nhanh hơn
+    animateDigit(digit3, 3);
+    animateDigit(digit2, 4);
+    animateDigit(digit1, 1.5, 2.5);
 
-    gsap.to(".progress-bar", { width: "30%", duration: 2, ease: "power4.inOut", delay: 7 });
+    // ĐÃ SỬA: Thanh tiến trình phi nhanh hơn
+    gsap.to(".progress-bar", { width: "30%", duration: 1.5, ease: "power4.inOut", delay: 3 });
     gsap.to(".progress-bar", {
-      width: "100%",
-      opacity: 0,
-      duration: 2,
-      delay: 8.5,
-      ease: "power3.out",
-      onComplete: () => gsap.set(".pre-loader", { display: "none" }),
+      width: "100%", opacity: 0, duration: 1.5, delay: 4.5, ease: "power3.out",
+      onComplete: () => gsap.set(".pre-loader", { display: "none" })
     });
 
+    // ĐÃ SỬA: Gọi hiệu ứng xé màn hình khớp với hàm runIntro ở trên (5s)
     gsap.to(".hero-imgs > img", {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-      duration: 1.2,
-      ease: "power4.inOut",
-      stagger: 0.25,
-      delay: 9,
+      duration: 1.2, ease: "power4.inOut", stagger: 0.25, delay: 5
     });
 
     gsap.fromTo(".hero-imgs",
       { scale: 1.2 },
-      { scale: 1, duration: 3, ease: "power3.inOut", delay: 9 }
+      { scale: 1, duration: 3, ease: "power3.inOut", delay: 5 }
     );
-    gsap.to("nav", { y: 0, duration: 1, ease: "power3.out", delay: 10 });
-    gsap.to("h1 span", { top: "0px", stagger: 0.1, duration: 1, ease: "power3.out", delay: 10 });
-        // ✅ END INTRO: mở khóa scroll + ẩn intro để lộ web chính
+    
+    // ĐÃ SỬA: Thả chữ xuống ở 6s (nhanh hơn bản gốc)
+    gsap.to("nav", { y: 0, duration: 1, ease: "power3.out", delay: 6 });
+    gsap.to("h1 span", { top: "0px", stagger: 0.1, duration: 1, ease: "power3.out", delay: 6 });
+    
+    // ĐÃ SỬA: Tắt Intro và trả lại thao tác chuột ở 7.5s
     const introSection = document.querySelector("#introSection");
-    gsap.delayedCall(11.2, () => {
+    gsap.delayedCall(7.5, () => {
       document.body.classList.remove("is-locked");
-
       if (introSection) {
         gsap.to(introSection, {
-          autoAlpha: 0,
-          duration: 1.25,
-          ease: "power2.out",
+          autoAlpha: 0, duration: 1.25, ease: "power2.out",
           onComplete: () => introSection.remove()
         });
       }
-
-      // refresh lại layout/scrolltrigger sau khi DOM thay đổi
       lenis.resize?.();
       ScrollTrigger.refresh();
     });
@@ -731,4 +753,57 @@ document.addEventListener("DOMContentLoaded", () => {
             playSound('snd-photo');
         }
     });
+
+    // ==========================================
+    // XỬ LÝ ĐÓNG MỞ MODAL DANH SÁCH GIÁO VIÊN
+    // ==========================================
+    const tlModal = $("#teacherListModal");
+    const openTlBtn = $("#openTeacherListBtn");
+    const closeTlBtn = $("#tlCloseBtn");
+    const tlOverlay = $("#tlCloseOverlay");
+
+    if (tlModal && openTlBtn) {
+        
+        openTlBtn.addEventListener("click", () => {
+            playSound('snd-click');
+            tlModal.classList.add("show");
+            // Tạm dừng lenis ở body để không bị scroll lấn
+            if(typeof lenis !== 'undefined') lenis.stop(); 
+        });
+
+        // Hàm đóng bảng chuẩn logic giống Postcard
+        const closeTlModal = () => {
+            playSound('snd-close');
+            tlModal.classList.add("closing"); // Kích hoạt CSS giấy rơi
+            
+            // Đợi 380ms rồi mới ẩn hẳn khối HTML
+            setTimeout(() => {
+                tlModal.classList.remove("show");
+                tlModal.classList.remove("closing"); 
+                if(typeof lenis !== 'undefined') lenis.start(); 
+            }, 380); 
+        };
+
+        closeTlBtn.addEventListener("click", closeTlModal);
+        tlOverlay.addEventListener("click", closeTlModal);
+        
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && tlModal.classList.contains("show")) {
+                closeTlModal();
+            }
+        });
+
+        // Bắt sự kiện click vào thẻ giáo viên
+        $(".tl-content")?.addEventListener("click", (e) => {
+            const card = e.target.closest(".tl-card:not(.active)");
+            if (card) {
+                e.preventDefault();
+                playSound('snd-photo'); 
+                const href = card.getAttribute("href");
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 350);
+            }
+        });
+    }
 });

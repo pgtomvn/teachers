@@ -74,8 +74,27 @@
       <a href="index.html"><img src="assets/logo.png" alt="12A2 Logo"></a>
     </div>
     <div class="nav-actions">
+      <button class="nav-btn hover-target" id="openTeacherListBtn" title="Đổi giáo viên">
+        <i class="fa-solid fa-address-book"></i> Sổ liên lạc
+      </button>
     </div>
   </nav>
+
+  <div class="teacher-list-modal" id="teacherListModal" aria-hidden="true">
+    <div class="tl-overlay" id="tlCloseOverlay"></div>
+    <div class="tl-notebook">
+      <div class="tl-binding"></div> <button class="tl-close hover-target" id="tlCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="tl-header">
+        <h3 class="font-hand"><i class="fa-solid fa-chalkboard-user"></i> Bảo Tàng Ký Ức K28</h3>
+        <p class="font-hand-2">Chọn một giáo viên để xem lưu bút nhé!</p>
+      </div>
+
+      <div class="tl-content" data-lenis-prevent>
+        <div class="tl-grid" id="teacherGrid"></div>
+      </div>
+    </div>
+  </div>
 
   <main class="detail-main">
     <header class="d-hero" id="hero">
