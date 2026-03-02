@@ -30,11 +30,11 @@
     "storyB": ["Là giáo viên chủ nhiệm, cô quan tâm đến từng bạn trong lớp, từ chuyện học tập đến những thay đổi nhỏ trong tâm trạng. Có những lời nhắc tưởng chừng đơn giản nhưng lại khiến tụi em suy nghĩ và trưởng thành hơn rất nhiều. Nhờ có cô đồng hành, lớp 11 của chúng em trở nên vững vàng và gắn kết hơn. Chúng em thật sự trân trọng và biết ơn vì có cô bên cạnh trong năm học này."], 
     "storyC": [], "storyD": [], "storyE": [],
     "gallery": [
-      { "src": "assets/teachers/11_co_hang/wipe_1.jpg", "cap": "Cô Hằng", "desc": "" },
-      { "src": "assets/teachers/11_co_hang/wipe_2.jpg", "cap": "Cô Hằng x2", "desc": "" },
-      { "src": "assets/teachers/11_co_hang/wipe_3.jpg", "cap": "Kỷ niệm Giải I GĐTH", "desc": "Lần đầu tiên chúng mình được giải I hội thi Giai điệu tuổi hồng. Tấm ảnh này được chúng mình cùng nhau chụp với cô để lưu giữ một trang kỉ niệm đáng nhớ." },
-      { "src": "assets/teachers/11_co_hang/wipe_4.jpg", "cap": "Kỷ niệm 20.11", "desc": "" },
-      { "src": "assets/teachers/11_co_hang/wipe_5.jpg", "cap": "Kỷ niệm Giải I GĐTH", "desc": "Lần đầu tiên chúng mình được giải I hội thi Giai điệu tuổi hồng. Tấm ảnh này được chúng mình cùng nhau chụp với cô để lưu giữ một trang kỉ niệm đáng nhớ." }
+      { "src": "assets/teachers/11_co_hang/wipe_JPG", "cap": "Cô Hằng", "desc": "" },
+      { "src": "assets/teachers/11_co_hang/wipe_2.JPG", "cap": "Cô Hằng x2", "desc": "" },
+      { "src": "assets/teachers/11_co_hang/wipe_3.JPG", "cap": "Kỷ niệm Giải I GĐTH", "desc": "Lần đầu tiên chúng mình được giải I hội thi Giai điệu tuổi hồng. Tấm ảnh này được chúng mình cùng nhau chụp với cô để lưu giữ một trang kỉ niệm đáng nhớ." },
+      { "src": "assets/teachers/11_co_hang/wipe_4.JPG", "cap": "Kỷ niệm 20.11", "desc": "" },
+      { "src": "assets/teachers/11_co_hang/wipe_5.JPG", "cap": "Kỷ niệm Giải I GĐTH", "desc": "Lần đầu tiên chúng mình được giải I hội thi Giai điệu tuổi hồng. Tấm ảnh này được chúng mình cùng nhau chụp với cô để lưu giữ một trang kỉ niệm đáng nhớ." }
     ]
   },
   "co-trang": {
