@@ -30,7 +30,7 @@
     "storyB": ["Là giáo viên chủ nhiệm, cô quan tâm đến từng bạn trong lớp, từ chuyện học tập đến những thay đổi nhỏ trong tâm trạng. Có những lời nhắc tưởng chừng đơn giản nhưng lại khiến tụi em suy nghĩ và trưởng thành hơn rất nhiều. Nhờ có cô đồng hành, lớp 11 của chúng em trở nên vững vàng và gắn kết hơn. Chúng em thật sự trân trọng và biết ơn vì có cô bên cạnh trong năm học này."], 
     "storyC": [], "storyD": [], "storyE": [],
     "gallery": [
-      { "src": "assets/teachers/11_co_hang/wipe_JPG", "cap": "Cô Hằng", "desc": "" },
+      { "src": "assets/teachers/11_co_hang/wipe_1.JPG", "cap": "Cô Hằng", "desc": "" },
       { "src": "assets/teachers/11_co_hang/wipe_2.JPG", "cap": "Cô Hằng x2", "desc": "" },
       { "src": "assets/teachers/11_co_hang/wipe_3.JPG", "cap": "Kỷ niệm Giải I GĐTH", "desc": "Lần đầu tiên chúng mình được giải I hội thi Giai điệu tuổi hồng. Tấm ảnh này được chúng mình cùng nhau chụp với cô để lưu giữ một trang kỉ niệm đáng nhớ." },
       { "src": "assets/teachers/11_co_hang/wipe_4.JPG", "cap": "Kỷ niệm 20.11", "desc": "" },
@@ -201,9 +201,9 @@
     "gallery": [
       { "src": "assets/teachers/10_co_lien/wipe_1.JPG", "cap": "Cô Liên", "desc": "" },
       { "src": "assets/teachers/10_co_lien/wipe_2.JPG", "cap": "Cũng là cô Liên", "desc": "" },
-      { "src": "assets/teachers/10_co_lien/wipe_5.JPG", "cap": "Cô Liên và tổ Ngoại Ngữ", "desc": "(Từ trái sang phải) Trong hình lần lượt là thầy Luân, cô Dung, cô Liên, thầy Nhân, cô Hương và cuối cùng là cô Thường." },
+      { "src": "assets/teachers/10_co_lien/wipe_5.jpg", "cap": "Cô Liên và tổ Ngoại Ngữ", "desc": "(Từ trái sang phải) Trong hình lần lượt là thầy Luân, cô Dung, cô Liên, thầy Nhân, cô Hương và cuối cùng là cô Thường." },
       { "src": "assets/teachers/10_co_lien/wipe_3.JPG", "cap": "Kỷ niệm 20.10", "desc": "Cô vui mừng và xúc động khi được bạn Phát thay mặt lớp tặng hoa." },
-      { "src": "assets/teachers/10_co_lien/wipe_4.JPG", "cap": "Kỷ niệm 20.10", "desc": "Một tấm ảnh tập thể cùng cô và các bạn nữ A2K28 để lưu lại khoảnh khắc đặc biệt nhân ngày Phụ nữ Việt Nam." }
+      { "src": "assets/teachers/10_co_lien/wipe_4.jpg", "cap": "Kỷ niệm 20.10", "desc": "Một tấm ảnh tập thể cùng cô và các bạn nữ A2K28 để lưu lại khoảnh khắc đặc biệt nhân ngày Phụ nữ Việt Nam." }
     ]
   },
   "co-dung": {
@@ -257,7 +257,7 @@
     ],
     "storyC": [], "storyD": [], "storyE": [],
     "gallery": [
-      { "src": "assets/teachers/12_co_huong/wipe_1.jpg", "cap": "Ngày hội văn hóa", "desc": "" },
+      { "src": "assets/teachers/12_co_huong/wipe_1.JPG", "cap": "Ngày hội văn hóa", "desc": "" },
       { "src": "assets/teachers/12_co_huong/wipe_2.jpg", "cap": "Kỷ niệm 20.11", "desc": "" }
     ]
   },
@@ -279,7 +279,7 @@
       {"src": "assets/teachers/10_thay_tai/wipe_2.PNG", "cap": "Thầy Tài", "desc": "" },
       {"src": "assets/teachers/10_thay_tai/wipe_3.JPG", "cap": "Cũng là thầy Tài", "desc": "" },
       {"src": "assets/teachers/10_thay_tai/wipe_4.JPG", "cap": "Cũng là thầy Tài, và thầy Minh", "desc": "" },
-      {"src": "assets/teachers/10_thay_tai/wipe_5.JPG", "cap": "Cũng là thầy Tài x3", "desc": "" }
+      {"src": "assets/teachers/10_thay_tai/wipe_5.jpg", "cap": "Cũng là thầy Tài x3", "desc": "" }
     ]
   },
   "co-oanh": {
@@ -413,8 +413,8 @@
     "storyA": ["Cô Bùi Thị Đào dạy Sử của em có cách giảng bài rất cuốn hút và đầy cảm xúc. Trong mỗi tiết học, cô thường kết hợp thêm hình ảnh và những đoạn video tư liệu xưa, giúp chúng em như được sống lại trong từng giai đoạn lịch sử. Nhờ vậy, những sự kiện và nhân vật không còn khô khan mà trở nên chân thật, gần gũi và dễ nhớ hơn. Cô kể chuyện lịch sử bằng giọng điệu truyền cảm, khiến cả lớp luôn chăm chú lắng nghe từ đầu đến cuối. Với em, cô đã thổi hồn vào từng bài học và giúp chúng em cảm nhận lịch sử theo một cách sinh động và ý nghĩa hơn rất nhiều."], 
     "storyB": [], "storyC": [], "storyD": [], "storyE": [],
     "gallery": [
-      { "src": "assets/teachers/10_11_co_dao/wipe_1.jpg", "cap": "Cô Đào", "desc": "" },
-      { "src": "assets/teachers/10_11_co_dao/wipe_2.jpg", "cap": "Cô Đào x2", "desc": "" }
+      { "src": "assets/teachers/10_11_co_dao/wipe_1.JPG", "cap": "Cô Đào", "desc": "" },
+      { "src": "assets/teachers/10_11_co_dao/wipe_2.JPG", "cap": "Cô Đào x2", "desc": "" }
     ]
   },
   "co-hanh": {
@@ -504,8 +504,8 @@
     "storyB": ["Trong giờ thực hành, thầy luôn hướng dẫn từng bước rất cẩn thận. Bạn nào chưa làm được, thầy đều kiên nhẫn chỉ lại đến khi hiểu mới thôi. Sự tận tâm và trách nhiệm của thầy khiến tụi em vừa nể vừa quý. Với chúng em, những tiết Công nghệ không chỉ bổ ích mà còn là khoảng thời gian học tập đầy trải nghiệm đáng nhớ."], 
     "storyC": [], "storyD": [], "storyE": [],
     "gallery": [
-      { "src": "assets/teachers/11_12_thay_cuong/wipe_1.jpg", "cap": "Kỷ niệm 20.11", "desc": "" },
-      { "src": "assets/teachers/11_12_thay_cuong/wipe_2.jpg", "cap": "Kỷ niệm 20.11", "desc": "" }
+      { "src": "assets/teachers/11_12_thay_cuong/wipe_1.JPG", "cap": "Kỷ niệm 20.11", "desc": "" },
+      { "src": "assets/teachers/11_12_thay_cuong/wipe_2.JPG", "cap": "Kỷ niệm 20.11", "desc": "" }
     ]
   },
 
@@ -587,8 +587,8 @@
     "name": "Cô Châu", "fullName": "Ngô Bảo Châu", "subject": "Kinh Tế - Pháp Luật", "grade": [11],
     "avatar": "assets/teachers/11_co_chau/avatar.jpg", "role": "Giáo viên Kinh Tế Pháp Luật", "quote": "“Giáo viên là những người kiến ​​tạo tương lai của chúng ta.”", "cover": "assets/teachers/11_co_chau/anh_hero.png", "cutout": "", "audio": "",
     "fig1": {}, "fig2": {}, "fig3": {}, "fig4": {}, "fig5": {}, "bigQuote": "“Mong cô luôn giữ gìn sức khỏe, nghỉ ngơi thật nhiều và luôn bình an.”", "bullets": [], "storyA": ["Cô Châu là giáo viên môn KTPL lớp 11 của chúng em. Cô là người luôn dạy học với sự chỉn chu và tinh thần trách nhiệm cao. Trong mỗi tiết học, cô chuẩn bị bài rất kỹ và giải thích từng nội dung một cách rõ ràng, mạch lạc. Những kiến thức tưởng như khô khan về kinh tế hay pháp luật qua cách cô giảng lại trở nên gần gũi hơn khi được gắn với những tình huống thực tế trong cuộc sống. Nhờ vậy, tụi em không chỉ hiểu bài mà còn thấy môn học có ý nghĩa và cần thiết hơn đối với bản thân."], "storyB": ["Không chỉ dừng lại ở việc truyền đạt kiến thức, cô còn giúp chúng em học cách suy nghĩ chín chắn và nhìn nhận vấn đề một cách khách quan hơn. Những câu hỏi cô đặt ra trong lớp thường khiến tụi em phải suy nghĩ kỹ trước khi trả lời, từ đó rèn được sự cẩn trọng và trách nhiệm với lời nói của mình. Tụi em thật sự trân trọng và biết ơn những gì cô đã dành cho lớp trong suốt năm học này."], "gallery": [
-    { "src": "assets/teachers/11_co_chau/wipe_1.jpg", "cap": "Cô Châu", "desc": "" },
-    { "src": "assets/teachers/11_co_chau/wipe_2.jpg", "cap": "Cô Châu x2", "desc": "" }
+    { "src": "assets/teachers/11_co_chau/wipe_1.JPG", "cap": "Cô Châu", "desc": "" },
+    { "src": "assets/teachers/11_co_chau/wipe_2.JPG", "cap": "Cô Châu x2", "desc": "" }
     ]
   }
 }
