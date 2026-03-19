@@ -149,7 +149,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 const playlist = [
                     "assets/ost.mp3",
                     "assets/ost2.mp3",
-                    "assets/ost3.mp3"
+                    "assets/ost3.mp3",
+                    "assets/ost4.mp3",
+                    "assets/ost5.mp3"
                 ];
 
                 let currentSong = ""; // Lưu lại bài đang hát
@@ -489,3 +491,45 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+// ==========================================
+    // KHIÊN PHÒNG THỦ: CHỐNG CHUỘT PHẢI & F12
+    // ==========================================
+    
+    // 1. Chặn menu chuột phải (Context Menu)
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    // 2. Chặn các phím tắt phổ biến để mở DevTools và View Source
+    document.addEventListener('keydown', function(e) {
+        // Chặn F12
+        if (e.key === 'F12' || e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+        }
+
+        // Chặn Ctrl+Shift+I (Mở Inspect)
+        if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.keyCode === 73)) {
+            e.preventDefault();
+            return false;
+        }
+
+        // Chặn Ctrl+Shift+J (Mở Console)
+        if (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.key === 'j' || e.keyCode === 74)) {
+            e.preventDefault();
+            return false;
+        }
+
+        // Chặn Ctrl+Shift+C (Mở Inspect Element)
+        if (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c' || e.keyCode === 67)) {
+            e.preventDefault();
+            return false;
+        }
+
+        // Chặn Ctrl+U (Mở View Source)
+        if (e.ctrlKey && (e.key === 'U' || e.key === 'u' || e.keyCode === 85)) {
+            e.preventDefault();
+            return false;
+        }
+    });
