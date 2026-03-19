@@ -388,10 +388,27 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- 7. GUESTBOOK ---
+    // --- 7. GUESTBOOK (NÂNG CẤP LÊN FIREBASE) ---
+    // Khởi tạo cấu hình (Dán phần code bạn copy ở Bước 1 vào đây)
+    const firebaseConfig = {
+        apiKey: "AIzaSyCzOoObrdCHZ_EhId-eYYrcPiQmP0dB6xc",
+        authDomain: "a2k28-memories.firebaseapp.com",
+        projectId: "a2k28-memories",
+        storageBucket: "a2k28-memories.firebasestorage.app",
+        messagingSenderId: "537440353527",
+        appId: "1:537440353527:web:77f8e8936a01d2d75727f2",
+        measurementId: "G-X92M9L8QVK"
+    };
+
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
+    const db = firebase.firestore();
+
     const notesEl = $("#notes");
     const gbBtn = $("#gbBtn");
     const colors = ["#fff7d1", "#ffd6d6", "#d7f3ff", "#e9ffd9", "#fff0f5"];
+    
     const renderNote = (note) => {
         const el = document.createElement("div");
         el.className = "note";
@@ -401,20 +418,40 @@ document.addEventListener("DOMContentLoaded", () => {
         notesEl.prepend(el);
         gsap.from(el, { y: 20, opacity: 0, scale: 0.8, duration: 0.4, ease: "back.out(1.5)" });
     };
+
     if(gbBtn) {
+        // Tự động kéo tin nhắn từ Firebase về hiển thị
+        db.collection("main_board").orderBy("timestamp", "asc").onSnapshot((snapshot) => {
+            notesEl.innerHTML = ""; // Xóa bảng cũ
+            
+            // 1. IN LỜI NHẮN MẶC ĐỊNH ĐẦU TIÊN
+            renderNote({ 
+                name: "Ối Zồi Ôi Con Tôi Học A2", 
+                msg: "Hãy để lại những dòng lưu bút thật đẹp tại đây nhé!" 
+            });
+
+            // 2. IN CÁC LỜI NHẮN TỪ DATABASE
+            snapshot.forEach((doc) => {
+                renderNote(doc.data());
+            });
+        });
+
+        // Bắn dữ liệu lên Firebase khi click gửi
         gbBtn.addEventListener("click", () => {
             const name = $("#gbName").value || "Ẩn danh";
             const msg = $("#gbMsg").value;
             if(!msg) return alert("Viết gì đó đi cậu ơi!");
-            const note = {name, msg};
-            renderNote(note);
+
+            // Hàm add() của Firebase sẽ tự động tạo ID và lưu
+            db.collection("main_board").add({
+                name: name,
+                msg: msg,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp() // Lấy giờ chuẩn của máy chủ
+            });
+
             $("#gbForm").reset();
-            const old = JSON.parse(localStorage.getItem("12a2notes") || "[]");
-            old.push(note);
-            localStorage.setItem("12a2notes", JSON.stringify(old));
+            playSound('snd-click'); 
         });
-        const old = JSON.parse(localStorage.getItem("12a2notes") || "[]");
-        old.forEach(renderNote);
     }
     
     // Petals

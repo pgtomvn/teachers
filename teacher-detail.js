@@ -536,28 +536,65 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- TO TOP ---
   $("#toTopBtn")?.addEventListener("click", () => lenis.scrollTo(0));
 
-  // --- LOVE BTN ---
-  const loveKey = `mm12a2_love_${id}`;
+  // ==========================================
+  // HỆ THỐNG FIREBASE: LỜI NHẮN & THẢ TIM
+  // ==========================================
+  const firebaseConfig = {
+    apiKey: "AIzaSyCzOoObrdCHZ_EhId-eYYrcPiQmP0dB6xc",
+    authDomain: "a2k28-memories.firebaseapp.com",
+    projectId: "a2k28-memories",
+    storageBucket: "a2k28-memories.firebasestorage.app",
+    messagingSenderId: "537440353527",
+    appId: "1:537440353527:web:77f8e8936a01d2d75727f2",
+    measurementId: "G-X92M9L8QVK"
+  };
+
+  if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+  }
+  const db = firebase.firestore();
+
+  const currentTeacherId = id; // Đã lấy từ URL ở trên
+
+  // ------------------------------------
+  // 1. TÍNH NĂNG THẢ TIM (REAL-TIME)
+  // ------------------------------------
   const loveBtn = $("#loveBtn");
   const loveCount = $("#loveCount");
-  if (loveCount) loveCount.textContent = localStorage.getItem(loveKey) || 0;
-  loveBtn?.addEventListener("click", () => {
-    const cur = parseInt(localStorage.getItem(loveKey) || "0", 10) + 1;
-    localStorage.setItem(loveKey, cur);
-    if (loveCount) loveCount.textContent = cur;
-    gsap.timeline().to(loveBtn, { scale: 1.3, duration: 0.1, yoyo: true, repeat: 1 });
-  });
+  // Tạo một nơi lưu tim riêng cho từng giáo viên (Ví dụ: teacher_stats -> co-trang)
+  const statsRef = db.collection("teacher_stats").doc(currentTeacherId);
 
-  // --- MESSAGE WALL (GUARD NULL) ---
+  if (loveBtn && loveCount) {
+      // Tự động lắng nghe và cập nhật số tim lên màn hình ngay lập tức
+      statsRef.onSnapshot((doc) => {
+          if (doc.exists) {
+              loveCount.textContent = doc.data().hearts || 0;
+          } else {
+              loveCount.textContent = 0;
+          }
+      });
+
+      // Bắn tim lên Database khi click
+      loveBtn.addEventListener("click", () => {
+          statsRef.set({
+              // Hàm increment(1) giúp cộng dồn an toàn dù nhiều người click cùng lúc
+              hearts: firebase.firestore.FieldValue.increment(1) 
+          }, { merge: true });
+
+          // Animation nảy tim
+          gsap.timeline().to(loveBtn, { scale: 1.3, duration: 0.1, yoyo: true, repeat: 1 });
+      });
+  }
+
+  // ------------------------------------
+  // 2. TÍNH NĂNG GUESTBOOK THẦY CÔ
+  // ------------------------------------
   const modal = $("#thanksModal");
   const wall = $("#publicWall");
   const colors = ["#fff7d1", "#ffd6d6", "#d7f3ff", "#e9ffd9", "#fff0f5"];
-  const currentTeacherId = id;
-  const STORAGE_KEY = `12a2_wall_${currentTeacherId}`;
 
   const renderNote = (note, animate = false) => {
-    if (!wall) return; // ✅ chặn crash
-
+    if (!wall) return; 
     const div = document.createElement("div");
     div.className = "pinned-note";
     div.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
@@ -574,7 +611,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ${note.msg}
       </div>
     `;
-
     wall.prepend(div);
 
     if (animate) {
@@ -582,30 +618,41 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  const loadSavedNotes = () => {
-    if (!wall) return;
-    const savedData = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-    savedData.forEach(note => renderNote(note, false));
-  };
-  loadSavedNotes();
-
   if (modal) {
-    const overlay = $("#thanksCloseOverlay"); // Lấy lớp nền mờ
+    const overlay = $("#thanksCloseOverlay"); 
 
-    $("#openThanksBtn")?.addEventListener("click", () => modal.classList.add("show"));
+    // Kéo tin nhắn từ Firebase về hiển thị
+    db.collection("wall_" + currentTeacherId).orderBy("timestamp", "asc").onSnapshot((snapshot) => {
+        wall.innerHTML = ""; 
+
+        // IN LỜI NHẮN MẶC ĐỊNH
+        renderNote({ 
+            name: "A2K28", 
+            msg: "Hãy để lại một lời nhắn của bạn dành tặng cho thầy/ cô tại đây nhé!" 
+        }, false);
+
+        // IN LỜI NHẮN TỪ DATABASE
+        snapshot.forEach((doc) => {
+            renderNote(doc.data(), true); 
+        });
+    });
+
+    $("#openThanksBtn")?.addEventListener("click", () => {
+        playSound('snd-click');
+        modal.classList.add("show");
+    });
 
     const closeModal = () => {
-        modal.classList.add("closing"); // Kích hoạt CSS giấy rơi
-        
-        // Đợi 380ms (cho hiệu ứng chạy gần xong) rồi mới ẩn hẳn khối HTML
+        playSound('snd-close');
+        modal.classList.add("closing"); 
         setTimeout(() => {
             modal.classList.remove("show");
-            modal.classList.remove("closing"); // Dọn dẹp để lần sau mở lên không bị lỗi
+            modal.classList.remove("closing"); 
         }, 380); 
     };
 
     $("#thanksClose")?.addEventListener("click", closeModal);
-    overlay?.addEventListener("click", closeModal); // Bấm ra ngoài rìa là đóng ngay
+    overlay?.addEventListener("click", closeModal); 
 
     $("#thanksSend")?.addEventListener("click", () => {
       const msg = $("#thanksMsg")?.value?.trim() || "";
@@ -613,17 +660,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (!msg) return alert("Dòng tin nhắn vẫn còn để trống! Nhanh tay viết vài lời gửi đến thầy/cô nào!");
 
-      const note = { name, msg };
-      renderNote(note, true);
-
-      const old = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-      old.push(note);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(old));
+      // Đẩy lên Firebase
+      db.collection("wall_" + currentTeacherId).add({
+          name: name,
+          msg: msg,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      });
 
       if ($("#thanksMsg")) $("#thanksMsg").value = "";
-      if ($("#thanksName")) $("#thanksName").value = ""; // Clear luôn tên cho sạch
+      if ($("#thanksName")) $("#thanksName").value = ""; 
       
-      closeModal(); // Dùng hàm đóng
+      closeModal(); 
       lenis.scrollTo("#publicMessageWall", { offset: -50 });
     });
   }
