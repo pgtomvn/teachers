@@ -417,7 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // --- XỬ LÝ NGÀY GIỜ ---
         let timeStr = "";
-        if (note.name !== "A2K28") { // Không in giờ cho lời nhắn mẫu
+        if (note.name !== "Ối Zồi Ôi Con Tôi Học A2") { // Không in giờ cho lời nhắn mẫu
             // Lấy thời gian từ Firebase, nếu chưa kịp load thì lấy giờ hiện tại
             const dateObj = note.timestamp ? note.timestamp.toDate() : new Date();
             const hh = String(dateObj.getHours()).padStart(2, '0');
