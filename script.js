@@ -414,7 +414,22 @@ document.addEventListener("DOMContentLoaded", () => {
         el.className = "note";
         el.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
         el.style.transform = `rotate(${Math.random() * 10 - 5}deg)`;
-        el.innerHTML = `<div class="meta">${note.name}</div><div class="msg">${note.msg}</div>`;
+        
+        // --- XỬ LÝ NGÀY GIỜ ---
+        let timeStr = "";
+        if (note.name !== "A2K28") { // Không in giờ cho lời nhắn mẫu
+            // Lấy thời gian từ Firebase, nếu chưa kịp load thì lấy giờ hiện tại
+            const dateObj = note.timestamp ? note.timestamp.toDate() : new Date();
+            const hh = String(dateObj.getHours()).padStart(2, '0');
+            const mm = String(dateObj.getMinutes()).padStart(2, '0');
+            const dd = String(dateObj.getDate()).padStart(2, '0');
+            const mo = String(dateObj.getMonth() + 1).padStart(2, '0');
+            const yy = String(dateObj.getFullYear()).slice(-2); // Chỉ lấy 2 số cuối của năm
+            
+            timeStr = `<div style="font-size: 0.85rem; color: #888; margin-top: 8px; text-align: right; border-top: 1px dashed rgba(0,0,0,0.1); padding-top: 4px;">[${hh}:${mm}] ${dd}/${mo}/${yy}</div>`;
+        }
+
+        el.innerHTML = `<div class="meta">${note.name}</div><div class="msg">${note.msg}</div>${timeStr}`;
         notesEl.prepend(el);
         gsap.from(el, { y: 20, opacity: 0, scale: 0.8, duration: 0.4, ease: "back.out(1.5)" });
     };

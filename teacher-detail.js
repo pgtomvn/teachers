@@ -604,11 +604,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const pins = ["red", "blue", "green", "yellow"];
     const pinColor = pins[Math.floor(Math.random() * pins.length)];
 
+    // --- XỬ LÝ NGÀY GIỜ ---
+    let timeStr = "";
+    if (note.name !== "A2K28") { // Không in giờ cho lời nhắn mẫu
+        const dateObj = note.timestamp ? note.timestamp.toDate() : new Date();
+        const hh = String(dateObj.getHours()).padStart(2, '0');
+        const mm = String(dateObj.getMinutes()).padStart(2, '0');
+        const dd = String(dateObj.getDate()).padStart(2, '0');
+        const mo = String(dateObj.getMonth() + 1).padStart(2, '0');
+        const yy = String(dateObj.getFullYear()).slice(-2);
+        
+        timeStr = `<div style="font-size: 0.85rem; color: #795548; margin-top: 10px; text-align: right; border-top: 1px dashed rgba(0,0,0,0.15); padding-top: 5px;">[${hh}:${mm}] ${dd}/${mo}/${yy}</div>`;
+    }
+
     div.innerHTML = `
       <div class="pin" style="background:${pinColor}"></div>
       <div class="note-content font-hand-2">
         <b style="color:#555">${note.name}:</b><br>
         ${note.msg}
+        ${timeStr}
       </div>
     `;
     wall.prepend(div);
