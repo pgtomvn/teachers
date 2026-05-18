@@ -182,7 +182,9 @@
       { "src": "assets/teachers/12_co_thang/wipe_2.jpg", "cap": "Đu trend", "desc": "" },
       { "src": "assets/teachers/12_co_thang/wipe_3.jpg", "cap": "Kỷ niệm 19.11", "desc": "Ngày Quốc tế Phụ Nam 19.11 thật đặc biệt khi cô đã cùng các bạn nữ tạo bất ngờ với vô vàn điều xúc động dành tặng cho các Anh Hi Say Trai." },
       { "src": "assets/teachers/12_co_thang/wipe_4.jpg", "cap": "Kỷ niệm 20.11", "desc": "" },
-      { "src": "assets/teachers/12_co_thang/wipe_5.jpg", "cap": "Kỷ niệm 20.11", "desc": "Tấm ảnh tập thể của A2K28 cùng cô nhân ngày Nhà giáo Việt Nam 20.11." }
+      { "src": "assets/teachers/12_co_thang/wipe_5.jpg", "cap": "Kỷ niệm 20.11", "desc": "Tấm ảnh tập thể của A2K28 cùng cô nhân ngày Nhà giáo Việt Nam 20.11." },
+      { "src": "assets/teachers/12_co_thang/anh_hero.png", "cap": "Cô Thắng", "desc": "" },
+      { "src": "assets/teachers/12_co_thang/wipe_6.jpg", "cap": "Kỷ yếu năm 12 cùng cô", "desc": "" }
     ]
   },
 
@@ -221,7 +223,8 @@
     "storyB": ["Cô dạy lớp ngày nào cũng cười, tạo cho chúng em cảm giác thoải mái và không quá áp lực. Chúng em nhớ lắm những lúc cô kể chuyện ma cho cả lớp nghe để “đổi gió”, vừa vui vừa hồi hộp nhưng ai cũng chăm chú lắng nghe. Những khoảnh khắc đó khiến giờ học trở nên đáng nhớ hơn rất nhiều. Đối với chúng em, cô không chỉ là một giáo viên tận tâm mà còn là người đã mang đến thật nhiều kỷ niệm đẹp trong năm học."], 
     "storyC": [], "storyD": [], "storyE": [],
     "gallery": [
-      { "src": "assets/teachers/11_co_dung/wipe_1.jpg", "cap": "Kỷ niệm 8.3", "desc": "Cô Dung và các bạn A2K28 chụp ảnh kỷ niệm nhân ngày Quốc tế Phụ nữ." }
+      { "src": "assets/teachers/11_co_dung/wipe_1.jpg", "cap": "Kỷ niệm 8.3", "desc": "Cô Dung và các bạn A2K28 chụp ảnh kỷ niệm nhân ngày Quốc tế Phụ nữ." },
+      { "src": "assets/teachers/11_co_dung/wipe_2.jpg", "cap": "Kỷ yếu năm 12 cùng cô", "desc": "" }
     ]
   },
   "thay-nam-quoc": {
