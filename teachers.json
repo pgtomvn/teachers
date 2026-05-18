@@ -66,7 +66,9 @@
       { "src": "assets/teachers/12_co_trang/wipe_8.png", "cap": "Cô Trang", "desc": "" },
       { "src": "assets/teachers/12_co_trang/wipe_6.jpg", "cap": "Kỷ niệm 20.10", "desc": "Cả lớp cùng nhau ghi lại kỷ niệm đáng yêu này." },
       { "src": "assets/teachers/12_co_trang/wipe_7.jpg", "cap": "Ngày khai giảng", "desc": "" },
-      { "src": "assets/teachers/12_co_trang/wipe_9.jpg", "cap": "Kỷ niệm Đà Lạt 2026", "desc": "" }
+      { "src": "assets/teachers/12_co_trang/wipe_9.jpg", "cap": "Kỷ niệm Đà Lạt 2026", "desc": "" },
+      { "src": "assets/teachers/12_co_trang/wipe_10.jpg", "cap": "Kỷ yếu năm 12 cùng cô", "desc": "" },
+      { "src": "assets/teachers/12_co_trang/wipe_11.jpg", "cap": "Kỷ yếu năm 12 cùng cô", "desc": "" }
     ]
   },
 
@@ -336,7 +338,9 @@
       { "src": "assets/teachers/12_co_tuyen/wipe_2.jpg", "cap": "Cô Tuyên", "desc": "" },
       { "src": "assets/teachers/12_co_tuyen/wipe_4.jpg", "cap": "Kỷ niệm 20.11", "desc": "" },
       { "src": "assets/teachers/12_co_tuyen/wipe_1.jpg", "cap": "Cô Tuyên x2", "desc": "" },
-      { "src": "assets/teachers/12_co_tuyen/wipe_5.jpg", "cap": "Kỷ niệm 20.11", "desc": "" }
+      { "src": "assets/teachers/12_co_tuyen/wipe_5.jpg", "cap": "Kỷ niệm 20.11", "desc": "" },
+      { "src": "assets/teachers/12_co_tuyen/anh_hero.png", "cap": "Cô Tuyên", "desc": "" },
+      { "src": "assets/teachers/12_co_tuyen/wipe_6.jpg", "cap": "Kỷ yếu năm 12 cùng cô", "desc": "" }
     ]
   },
   "thay-danh": {
@@ -472,7 +476,10 @@
       { "src": "assets/teachers/10_11_12_thay_suyen/wipe_2.jpg", "cap": "Tân thạc sĩ", "desc": "Một tấm ảnh của thầy khi tốt nghiệp thạc sĩ, minh chứng cho sự chăm chỉ, không ngừng nỗ lực trong tiếp thu kiến thức. Bằng những gì mà mình có được, thầy đã tiếp lửa thêm cho lứa học trò A2K28 tiếp tục vững bước trên con đường chinh phục tri thức." },
       { "src": "assets/teachers/10_11_12_thay_suyen/wipe_3.jpg", "cap": "Chuyến đi của tuổi trẻ", "desc": "" },
       { "src": "assets/teachers/10_11_12_thay_suyen/wipe_4.jpg", "cap": "Thầy và gia đình nhỏ", "desc": "Ngày Tết được cùng quây quần bên gia đình nhỏ là một điều không còn gì hơn <33." },
-      { "src": "assets/teachers/10_11_12_thay_suyen/wipe_5.jpg", "cap": "Thầy và gia đình nhỏ", "desc": "" }
+      { "src": "assets/teachers/10_11_12_thay_suyen/wipe_5.jpg", "cap": "Thầy và gia đình nhỏ", "desc": "" },
+      { "src": "assets/teachers/10_11_12_thay_suyen/anh_hero.jpg", "cap": "Thầy Suyền", "desc": "" },
+      { "src": "assets/teachers/10_11_12_thay_suyen/wipe_6.jpg", "cap": "Kỷ yếu năm 12 cùng thầy", "desc": "" },
+      { "src": "assets/teachers/10_11_12_thay_suyen/wipe_7.jpg", "cap": "Kỷ yếu năm 12 cùng thầy", "desc": "" }
     ]
   },
   "thay-thai": {
