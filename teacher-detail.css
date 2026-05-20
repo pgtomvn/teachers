@@ -583,13 +583,22 @@ body.detail-page:not(.is-locked) { overflow-y: auto; height: auto; }
 
 /* --- CÁC THÀNH PHẦN CON --- */
 
-/* 1. Đĩa than nhỏ (Size S) */
+/* 1. Đĩa than nhỏ (Size S) với khung đỡ kim phát nhạc */
+.tag-left {
+    position: relative;
+    width: 62px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 .vinyl-record-s {
     width: 38px; height: 38px;
     background: #2b2b2b;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     position: relative;
     border: 1px solid #1a1a1a;
 }
@@ -606,8 +615,45 @@ body.detail-page:not(.is-locked) { overflow-y: auto; height: auto; }
 /* Animation xoay giữ nguyên */
 .spin-animation { animation: spin-record 2.5s linear infinite; }
 
+/* Cần đọc nhạc (Stylus / Tonearm) */
+.tonearm {
+    position: absolute;
+    top: -5px;
+    right: 2px;
+    width: 24px;
+    height: 40px;
+    z-index: 10;
+    pointer-events: none;
+    transform-origin: 12px 8px; /* Khớp xoay ở tâm vòng tròn bạc cx=15 cy=10 trên viewbox 30x50 */
+    transform: rotate(0deg);
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); /* Cực kỳ mượt mà khi hạ kim và nhấc kim */
+    filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.18));
+}
+
+.tonearm svg {
+    width: 100%;
+    height: 100%;
+    transform-origin: 15px 10px; /* Tâm khớp xoay trong SVG viewBox */
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Khi đang phát nhạc: Kim đọc chạm vào đĩa và hơi nhún nhảy nhẹ */
+.tonearm.playing {
+    transform: rotate(22deg);
+}
+
+.tonearm.playing svg {
+    animation: tonearm-ride-grooves-svg 2s infinite ease-in-out;
+    animation-delay: 0.8s; /* Đợi hạ kim xuống đĩa xong mới nhún nhảy nhẹ */
+}
+
+@keyframes tonearm-ride-grooves-svg {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(0.8deg); }
+}
+
 /* 2. Thông tin giữa */
-.tag-center { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-left: 5px; }
+.tag-center { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-left: 8px; }
 .tag-filename {
     font-size: 1.1rem; /* Dùng font viết tay Patrick Hand cho tự nhiên */
     color: var(--c-brown);
@@ -616,14 +662,22 @@ body.detail-page:not(.is-locked) { overflow-y: auto; height: auto; }
     margin-bottom: 4px;
 }
 
-/* Sóng âm nhỏ (Size S) */
+/* Sóng âm tương tác mới (18 cột sóng) */
 .wave-container-s { 
     display: flex; 
     align-items: center; 
-    gap: 2px; 
-    height: 14px; 
-    opacity: 0.5; 
-    transition: opacity 0.3s; 
+    gap: 3px; 
+    height: 20px; 
+    opacity: 0.6; 
+    transition: opacity 0.3s, transform 0.3s; 
+    cursor: ew-resize;
+    user-select: none;
+    padding: 2px 0;
+}
+
+.wave-container-s:hover { 
+    opacity: 1; 
+    transform: scaleY(1.05);
 }
 
 .wave-container-s.playing { 
@@ -631,30 +685,34 @@ body.detail-page:not(.is-locked) { overflow-y: auto; height: auto; }
 }
 
 .wave-container-s .bar { 
+    flex: 1;
     width: 3px; 
-    height: 3px; 
-    background: var(--c-sunset); /* Màu cam nhạt lúc dừng */
+    height: var(--bar-h, 4px);
+    background: rgba(93, 64, 55, 0.25); /* default unplayed state */
     border-radius: 2px; 
-    transition: height 0.1s ease; 
+    transition: background 0.15s ease, transform 0.15s ease;
+    pointer-events: none; /* Tránh cản trở chuột bấm lên container */
 }
 
-/* 1. Gắn chuyển động khi có class playing */
-.wave-container-s.playing .bar { 
-    animation: wave-bounce 1s infinite ease-in-out; 
+/* Trạng thái được highlight màu đậm khi nhạc trôi qua */
+.wave-container-s .bar.active { 
+    background: var(--c-sunset-dark);
 }
 
-/* 2. Tạo độ trễ (delay) cho từng cột để nó lượn lên xuống so le nhau */
-.wave-container-s.playing .bar:nth-child(1) { animation-delay: 0.0s; }
-.wave-container-s.playing .bar:nth-child(2) { animation-delay: 0.2s; }
-.wave-container-s.playing .bar:nth-child(3) { animation-delay: 0.4s; }
-.wave-container-s.playing .bar:nth-child(4) { animation-delay: 0.1s; }
-.wave-container-s.playing .bar:nth-child(5) { animation-delay: 0.3s; }
-.wave-container-s.playing .bar:nth-child(6) { animation-delay: 0.15s; }
+/* Khi đang chơi nhạc, các bar active sẽ nhấp nhô nhẹ theo sóng âm */
+.wave-container-s.playing .bar.active { 
+    animation: wave-bounce-active 1.2s infinite ease-in-out; 
+}
 
-/* 3. Định nghĩa độ cao lúc nhấp nhô */
-@keyframes wave-bounce {
-    0%, 100% { height: 3px; background: var(--c-sunset); }
-    50% { height: 14px; background: var(--c-sunset-dark); } /* Cao lên và đổi màu đậm hơn */
+/* Tạo so le chuyển động cho sinh động */
+.wave-container-s.playing .bar.active:nth-child(even) { animation-delay: 0.15s; }
+.wave-container-s.playing .bar.active:nth-child(3n) { animation-delay: 0.3s; }
+.wave-container-s.playing .bar.active:nth-child(4n) { animation-delay: 0.08s; }
+
+/* Định nghĩa độ cao lúc nhấp nhô của sóng active */
+@keyframes wave-bounce-active {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(1.45); }
 }
 
 /* 3. Nút Play & Thời gian bên phải */

@@ -160,6 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const audioEl = $("#teacherAudio");
             const playBtn = $("#audioPlayBtn");
             const audioVinyl = $("#audioVinyl");
+            const audioTonearm = $("#audioTonearm");
             const audioWave = $("#audioWave"); // Lấy sóng âm
             const audioTime = $("#audioTime");
             
@@ -176,12 +177,31 @@ document.addEventListener("DOMContentLoaded", () => {
                 return `${m}:${s}`;
             };
 
+            const bars = audioWave.querySelectorAll(".bar");
+            const barCount = bars.length;
+
+            const updateWaveProgress = (currentTime, duration) => {
+                if (!duration || isNaN(duration)) return;
+                const pct = currentTime / duration;
+                const activeIndex = Math.ceil(pct * barCount);
+                
+                bars.forEach((bar, index) => {
+                    if (index < activeIndex) {
+                        bar.classList.add("active");
+                    } else {
+                        bar.classList.remove("active");
+                    }
+                });
+            };
+
             audioEl.addEventListener("loadedmetadata", () => {
                 audioTime.textContent = `00:00 / ${formatTime(audioEl.duration)}`;
+                updateWaveProgress(0, audioEl.duration);
             });
 
             audioEl.addEventListener("timeupdate", () => {
                 audioTime.textContent = `${formatTime(audioEl.currentTime)} / ${formatTime(audioEl.duration)}`;
+                updateWaveProgress(audioEl.currentTime, audioEl.duration);
             });
 
             playBtn.addEventListener("click", () => {
@@ -189,11 +209,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     audioEl.play();
                     playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
                     audioVinyl.classList.add("spin-animation"); 
+                    if (audioTonearm) audioTonearm.classList.add("playing"); 
                     audioWave.classList.add("playing"); // Bật sóng âm nhấp nhô
                 } else {
                     audioEl.pause();
                     playBtn.innerHTML = '<i class="fa-solid fa-play" style="margin-left: 2px;"></i>';
                     audioVinyl.classList.remove("spin-animation"); 
+                    if (audioTonearm) audioTonearm.classList.remove("playing");
                     audioWave.classList.remove("playing"); // Tắt sóng âm
                 }
             });
@@ -201,8 +223,62 @@ document.addEventListener("DOMContentLoaded", () => {
             audioEl.addEventListener("ended", () => {
                 playBtn.innerHTML = '<i class="fa-solid fa-play" style="margin-left: 2px;"></i>';
                 audioVinyl.classList.remove("spin-animation");
+                if (audioTonearm) audioTonearm.classList.remove("playing");
                 audioWave.classList.remove("playing");
                 audioTime.textContent = `00:00 / ${formatTime(audioEl.duration)}`;
+                updateWaveProgress(0, audioEl.duration);
+            });
+
+            // ========================================================
+            // CHUYÊN GIA UI/UX: LOGIC TUA NHẠC (SCRUBBING) DOCK/DRAG
+            // ========================================================
+            let isDragging = false;
+
+            const seekAudio = (clientX) => {
+                const rect = audioWave.getBoundingClientRect();
+                let x = clientX - rect.left;
+                if (x < 0) x = 0;
+                if (x > rect.width) x = rect.width;
+                const pct = x / rect.width;
+
+                if (!isNaN(audioEl.duration) && isFinite(audioEl.duration)) {
+                    audioEl.currentTime = pct * audioEl.duration;
+                    updateWaveProgress(audioEl.currentTime, audioEl.duration);
+                }
+            };
+
+            // Sự kiện kéo thả chuột
+            audioWave.addEventListener("mousedown", (e) => {
+                isDragging = true;
+                seekAudio(e.clientX);
+            });
+
+            window.addEventListener("mousemove", (e) => {
+                if (isDragging) {
+                    seekAudio(e.clientX);
+                }
+            });
+
+            window.addEventListener("mouseup", () => {
+                isDragging = false;
+            });
+
+            // Sự kiện cảm ứng kéo thả trên di động (Responsive Touch)
+            audioWave.addEventListener("touchstart", (e) => {
+                isDragging = true;
+                if (e.touches.length > 0) {
+                    seekAudio(e.touches[0].clientX);
+                }
+            });
+
+            window.addEventListener("touchmove", (e) => {
+                if (isDragging && e.touches.length > 0) {
+                    seekAudio(e.touches[0].clientX);
+                }
+            });
+
+            window.addEventListener("touchend", () => {
+                isDragging = false;
             });
         }
 
@@ -862,12 +938,150 @@ document.addEventListener("DOMContentLoaded", () => {
                 playSound('snd-photo'); 
                 const href = card.getAttribute("href");
                 setTimeout(() => {
-                    window.location.href = href;
+                    if (typeof window.playExitTransition === 'function') {
+                        window.playExitTransition(href);
+                    } else {
+                        window.location.href = href;
+                    }
                 }, 350);
             }
         });
     }
+
+    // ========================================================
+    // CINEMATIC PAGE TRANSITION LOADER (AWARDS SPEC)
+    // ========================================================
+    const injectCinematicLoader = () => {
+        const loaderHtml = `
+        <div class="cinematic-loader" id="cinematicLoader" style="display: none;">
+          <div class="steam-cloud cloud-1"></div>
+          <div class="steam-cloud cloud-2"></div>
+          <div class="steam-cloud cloud-3"></div>
+          <div class="steam-cloud cloud-4"></div>
+          <div class="transition-ticket">
+            <div class="ticket-stub">
+              <span class="stub-code">A2K28</span>
+            </div>
+            <div class="ticket-body">
+              <div class="ticket-title">VÉ CHUYẾN TÀU KÝ ỨC</div>
+              <div class="ticket-route">GA THANH XUÂN ➔ HÀNH TRÌNH</div>
+              <div class="ticket-meta">
+                <span>KHỞI HÀNH: 2026</span>
+                <span>HẠNG VÉ: VIP</span>
+              </div>
+              <div class="ticket-stamp">ĐÃ SOÁT VÉ</div>
+            </div>
+          </div>
+        </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', loaderHtml);
+    };
+
+    const handlePageEntrance = () => {
+        const loader = document.getElementById("cinematicLoader");
+        if (!loader) return;
+
+        if (sessionStorage.getItem("playPageTransition") === "true") {
+            sessionStorage.removeItem("playPageTransition");
+            
+            loader.style.display = "flex";
+            loader.style.pointerEvents = "auto";
+            
+            const clouds = loader.querySelectorAll(".steam-cloud");
+            const ticket = loader.querySelector(".transition-ticket");
+
+            gsap.set(clouds, { scale: 2.2, opacity: 1 });
+            gsap.set(ticket, { x: 0, y: 0, rotation: -12, scale: 1.1, opacity: 1 });
+
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    loader.style.display = "none";
+                    loader.style.pointerEvents = "none";
+                }
+            });
+
+            tl.to(ticket, {
+                x: "-100vw",
+                y: "-50vh",
+                rotation: -45,
+                scale: 0.5,
+                opacity: 0,
+                duration: 1.0,
+                ease: "power2.inOut"
+            }, 0);
+
+            tl.to(clouds, {
+                scale: 0,
+                opacity: 0,
+                duration: 1.4,
+                stagger: 0.1,
+                ease: "power2.inOut"
+            }, 0.2);
+        }
+    };
+
+    window.playExitTransition = (targetHref) => {
+        const loader = document.getElementById("cinematicLoader");
+        if (!loader) {
+            window.location.href = targetHref;
+            return;
+        }
+
+        loader.style.display = "flex";
+        loader.style.pointerEvents = "auto";
+
+        const clouds = loader.querySelectorAll(".steam-cloud");
+        const ticket = loader.querySelector(".transition-ticket");
+
+        gsap.set(clouds, { scale: 0, opacity: 0 });
+        gsap.set(ticket, { x: "100vw", y: "50vh", rotation: 45, scale: 0.5, opacity: 0 });
+
+        playSound('snd-train');
+        sessionStorage.setItem("playPageTransition", "true");
+
+        const tl = gsap.timeline({
+            onComplete: () => {
+                window.location.href = targetHref;
+            }
+        });
+
+        tl.to(clouds, {
+            scale: 2.2,
+            opacity: 1,
+            duration: 1.3,
+            stagger: 0.08,
+            ease: "power2.out"
+        }, 0);
+
+        tl.to(ticket, {
+            x: 0,
+            y: 0,
+            rotation: -12,
+            scale: 1.1,
+            opacity: 1,
+            duration: 1.2,
+            ease: "back.out(1.2)"
+        }, 0.2);
+    };
+
+    // Inject and run entrance transition
+    injectCinematicLoader();
+    handlePageEntrance();
+
+    // Auto-bind click transitions to local link element changes
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (link) {
+            const href = link.getAttribute('href');
+            const target = link.getAttribute('target');
+            if (href && !href.startsWith('#') && !href.startsWith('javascript:') && target !== '_blank' && (href.endsWith('.html') || href.includes('index.html') || href.includes('teacher-detail.html'))) {
+                e.preventDefault();
+                window.playExitTransition(href);
+            }
+        }
+    });
 });
+
 
 // ==========================================
     // KHIÊN PHÒNG THỦ: CHỐNG CHUỘT PHẢI & F12

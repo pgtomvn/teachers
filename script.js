@@ -297,17 +297,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         halls.forEach((hall) => {
-            // Card Parallax
-            const cards = hall.querySelectorAll(".t-pin, .memory-polaroid");
-            if(cards.length) {
-                gsap.from(cards, {
-                    y: 100, opacity: 0, rotation: 10, stagger: 0.1, duration: 1, ease: "back.out(1.7)",
-                    scrollTrigger: {
-                        trigger: hall, containerAnimation: horizontalTween,
-                        start: "left 70%", toggleActions: "play none none reverse"
-                    }
-                });
-            }
             // Doodle Animation (Vẽ tay)
             const doodle = hall.querySelector(".doodle-circle path");
             if(doodle) {
@@ -513,17 +502,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 4. Âm thanh chụp ảnh khi click Card Thầy Cô
-    // Vì card thầy cô được tạo bằng JS (động), ta phải bắt sự kiện click toàn trang
     document.addEventListener('click', (e) => {
         const card = e.target.closest('.pin-label, .note-paper');
         if (card) {
-            e.preventDefault(); // Chặn việc chuyển trang ngay lập tức
-            playSound('snd-photo'); // Phát âm thanh tách cái
-            
+            e.preventDefault();
+            playSound('snd-photo');
             const href = card.getAttribute('href');
-            // Chờ 350ms cho âm thanh kêu xong rồi mới chuyển trang
             setTimeout(() => {
-                window.location.href = href;
+                if (typeof window.playExitTransition === 'function') {
+                    window.playExitTransition(href);
+                } else {
+                    window.location.href = href;
+                }
             }, 350); 
         }
     });
@@ -542,7 +532,399 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 300); 
         });
     });
+    // ========================================================
+    // CHUYÊN GIA UI/UX: HÀM KHỞI TẠO ĐẾM NGƯỢC GA THANH XUÂN 3D
+    // ========================================================
+    const initCountdown = () => {
+        const targetDate = new Date("2026-05-25T07:00:00+07:00");
+        const daysEl = document.getElementById("days");
+        const hoursEl = document.getElementById("hours");
+        const minutesEl = document.getElementById("minutes");
+        const secondsEl = document.getElementById("seconds");
+        const timerEl = document.getElementById("timer");
+
+        if (!timerEl) return;
+
+        const updateClock = () => {
+            const now = new Date();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                clearInterval(timerInterval);
+                timerEl.innerHTML = `<div class="countdown-finished font-hand" style="font-size: clamp(2rem, 5vw, 3.5rem); color: var(--c-sunset-dark); text-shadow: 2px 2px 0px rgba(93,64,55,0.1); width: 100%; text-align: center; font-weight: bold; letter-spacing: 2px;">VẬT TRÌNH BÀI BẾ GIẢNG</div>`;
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            const dStr = String(days).padStart(2, '0');
+            const hStr = String(hours).padStart(2, '0');
+            const mStr = String(minutes).padStart(2, '0');
+            const sStr = String(seconds).padStart(2, '0');
+
+            if (daysEl && daysEl.innerText !== dStr) {
+                daysEl.innerText = dStr;
+                animateCard(daysEl);
+            }
+            if (hoursEl && hoursEl.innerText !== hStr) {
+                hoursEl.innerText = hStr;
+                animateCard(hoursEl);
+            }
+            if (minutesEl && minutesEl.innerText !== mStr) {
+                minutesEl.innerText = mStr;
+                animateCard(minutesEl);
+            }
+            if (secondsEl && secondsEl.innerText !== sStr) {
+                secondsEl.innerText = sStr;
+                animateCard(secondsEl);
+            }
+        };
+
+        const animateCard = (el) => {
+            if (el && typeof gsap !== 'undefined') {
+                gsap.fromTo(el, 
+                    { scale: 0.7, rotation: -8, y: -8, opacity: 0.6 },
+                    { scale: 1, rotation: 0, y: 0, opacity: 1, duration: 0.45, ease: "back.out(2)" }
+                );
+            }
+        };
+
+        updateClock();
+        const timerInterval = setInterval(updateClock, 1000);
+    };
+
+    initCountdown();
+
+    // ========================================================
+    // GSAP SCROLLTRIGGER ENTRANCE ANIMATION CHO COUNTDOWN
+    // ========================================================
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        const countdownTL = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#countdown",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            }
+        });
+
+        // 1. Toàn bộ bảng gỗ đếm ngược lớn trồi lên mượt mà
+        countdownTL.from(".countdown-container", {
+            y: 60,
+            scale: 0.95,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power3.out"
+        });
+
+        // 2. Xuất hiện huy hiệu nhà ga
+        countdownTL.from(".countdown-badge", {
+            y: 20,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power2.out"
+        }, "-=0.8");
+
+        // 3. Hiệu ứng bẻ chữ bốc bay cho Tiêu đề
+        const titleEl = document.querySelector(".countdown-title");
+        if (titleEl) {
+            const text = titleEl.textContent;
+            titleEl.innerHTML = text.split("").map(char => char === " " ? " " : `<span class="char-span" style="display:inline-block">${char}</span>`).join("");
+            
+            countdownTL.from(".countdown-title .char-span", {
+                y: 40,
+                opacity: 0,
+                rotation: -8,
+                duration: 0.8,
+                stagger: 0.04,
+                ease: "back.out(1.7)"
+            }, "-=0.6");
+        }
+
+        // 4. Hiện mượt các khối đồng hồ
+        countdownTL.from(".time-block", {
+            scale: 0.8,
+            y: 40,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "back.out(1.7)"
+        }, "-=0.6");
+
+        // 5. Xuất hiện hai sticker bay bổng hai bên
+        countdownTL.from(".countdown-decor-sticker", {
+            scale: 0,
+            rotation: -45,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: "back.out(2)"
+        }, "-=0.6");
+
+        // 6. Animate quote
+        countdownTL.from(".countdown-quote", {
+            opacity: 0,
+            y: 20,
+            duration: 0.6
+        }, "-=0.4");
+
+        // ========================================================
+        // KHÔI PHỤC VÀ ĐỘC LẬP TẤM VÉ GA TIẾP THEO (TICKET CARD)
+        // ========================================================
+        gsap.from(".countdown-note-card", {
+            scrollTrigger: {
+                trigger: ".countdown-note-card",
+                start: "top 95%",
+                toggleActions: "play none none none"
+            },
+            scale: 0.85,
+            rotation: -8,
+            opacity: 0,
+            y: 35,
+            duration: 1.0,
+            ease: "back.out(1.5)"
+        });
+
+        // ========================================================
+        // NÂNG CẤP HOẠT ẢNH STICKY HEADER CHO GA HÀNH TRÌNH
+        // ========================================================
+        gsap.from(".lane-ticket", {
+            scrollTrigger: {
+                trigger: "#lane",
+                start: "top 85%",
+                toggleActions: "play none none reverse"
+            },
+            x: -120,
+            rotation: -25,
+            opacity: 0,
+            duration: 1.2,
+            ease: "back.out(1.5)"
+        });
+
+        gsap.from(".lane-progress", {
+            scrollTrigger: {
+                trigger: "#lane",
+                start: "top 85%",
+                toggleActions: "play none none reverse"
+            },
+            x: 100,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power3.out"
+        });
+
+        // ========================================================
+        // NÂNG CẤP HOẠT ẢNH TRỒI PHÂN TẦNG CHO PHẦN OUTRO (GUESTBOOK)
+        // ========================================================
+        gsap.from("#outro .outro-header", {
+            scrollTrigger: {
+                trigger: "#outro",
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            },
+            y: 40,
+            opacity: 0,
+            duration: 1.0,
+            ease: "power3.out"
+        });
+
+        gsap.from("#outro .gb-form-card", {
+            scrollTrigger: {
+                trigger: "#outro",
+                start: "top 75%",
+                toggleActions: "play none none reverse"
+            },
+            y: 50,
+            rotation: -3,
+            opacity: 0,
+            duration: 1.2,
+            ease: "back.out(1.5)"
+        });
+
+        gsap.from("#outro .gb-board-area", {
+            scrollTrigger: {
+                trigger: "#outro",
+                start: "top 70%",
+                toggleActions: "play none none reverse"
+            },
+            y: 50,
+            rotation: 2,
+            opacity: 0,
+            duration: 1.2,
+            ease: "back.out(1.5)"
+        });
+    }
+
+    // ========================================================
+    // HIỆU ỨNG TƯƠNG TÁC 3D CARD TILTING (MAGNETIC HOVER)
+    // ========================================================
+    const timeBlocks = document.querySelectorAll(".time-block");
+    timeBlocks.forEach(block => {
+        block.addEventListener("mousemove", (e) => {
+            const rect = block.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            // Tính toán góc xoay giới hạn từ -12 đến 12 độ
+            const rotX = -(y / (rect.height / 2)) * 12;
+            const rotY = (x / (rect.width / 2)) * 12;
+            
+            gsap.to(block, {
+                rotateX: rotX,
+                rotateY: rotY,
+                scale: 1.05,
+                duration: 0.2,
+                ease: "power1.out"
+            });
+        });
+        
+        block.addEventListener("mouseleave", () => {
+            gsap.to(block, {
+                rotateX: 0,
+                rotateY: 0,
+                scale: 1,
+                duration: 0.5,
+                ease: "power2.out"
+            });
+        });
+    });
+
+    // ========================================================
+    // CINEMATIC PAGE TRANSITION LOADER (AWARDS SPEC)
+    // ========================================================
+    const injectCinematicLoader = () => {
+        const loaderHtml = `
+        <div class="cinematic-loader" id="cinematicLoader" style="display: none;">
+          <div class="steam-cloud cloud-1"></div>
+          <div class="steam-cloud cloud-2"></div>
+          <div class="steam-cloud cloud-3"></div>
+          <div class="steam-cloud cloud-4"></div>
+          <div class="transition-ticket">
+            <div class="ticket-stub">
+              <span class="stub-code">A2K28</span>
+            </div>
+            <div class="ticket-body">
+              <div class="ticket-title">VÉ CHUYẾN TÀU KÝ ỨC</div>
+              <div class="ticket-route">GA THANH XUÂN ➔ HÀNH TRÌNH</div>
+              <div class="ticket-meta">
+                <span>KHỞI HÀNH: 2026</span>
+                <span>HẠNG VÉ: VIP</span>
+              </div>
+              <div class="ticket-stamp">ĐÃ SOÁT VÉ</div>
+            </div>
+          </div>
+        </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', loaderHtml);
+    };
+
+    const handlePageEntrance = () => {
+        const loader = document.getElementById("cinematicLoader");
+        if (!loader) return;
+
+        if (sessionStorage.getItem("playPageTransition") === "true") {
+            sessionStorage.removeItem("playPageTransition");
+            
+            loader.style.display = "flex";
+            loader.style.pointerEvents = "auto";
+            
+            const clouds = loader.querySelectorAll(".steam-cloud");
+            const ticket = loader.querySelector(".transition-ticket");
+
+            gsap.set(clouds, { scale: 2.2, opacity: 1 });
+            gsap.set(ticket, { x: 0, y: 0, rotation: -12, scale: 1.1, opacity: 1 });
+
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    loader.style.display = "none";
+                    loader.style.pointerEvents = "none";
+                }
+            });
+
+            tl.to(ticket, {
+                x: "-100vw",
+                y: "-50vh",
+                rotation: -45,
+                scale: 0.5,
+                opacity: 0,
+                duration: 1.0,
+                ease: "power2.inOut"
+            }, 0);
+
+            tl.to(clouds, {
+                scale: 0,
+                opacity: 0,
+                duration: 1.4,
+                stagger: 0.1,
+                ease: "power2.inOut"
+            }, 0.2);
+        }
+    };
+
+    window.playExitTransition = (targetHref) => {
+        const loader = document.getElementById("cinematicLoader");
+        if (!loader) {
+            window.location.href = targetHref;
+            return;
+        }
+
+        loader.style.display = "flex";
+        loader.style.pointerEvents = "auto";
+
+        const clouds = loader.querySelectorAll(".steam-cloud");
+        const ticket = loader.querySelector(".transition-ticket");
+
+        gsap.set(clouds, { scale: 0, opacity: 0 });
+        gsap.set(ticket, { x: "100vw", y: "50vh", rotation: 45, scale: 0.5, opacity: 0 });
+
+        playSound('snd-train');
+        sessionStorage.setItem("playPageTransition", "true");
+
+        const tl = gsap.timeline({
+            onComplete: () => {
+                window.location.href = targetHref;
+            }
+        });
+
+        tl.to(clouds, {
+            scale: 2.2,
+            opacity: 1,
+            duration: 1.3,
+            stagger: 0.08,
+            ease: "power2.out"
+        }, 0);
+
+        tl.to(ticket, {
+            x: 0,
+            y: 0,
+            rotation: -12,
+            scale: 1.1,
+            opacity: 1,
+            duration: 1.2,
+            ease: "back.out(1.2)"
+        }, 0.2);
+    };
+
+    // Inject and run entrance transition
+    injectCinematicLoader();
+    handlePageEntrance();
+
+    // Auto-bind click transitions to local link element changes
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (link) {
+            const href = link.getAttribute('href');
+            const target = link.getAttribute('target');
+            if (href && !href.startsWith('#') && !href.startsWith('javascript:') && target !== '_blank' && (href.endsWith('.html') || href.includes('index.html') || href.includes('teacher-detail.html'))) {
+                e.preventDefault();
+                window.playExitTransition(href);
+            }
+        }
+    });
 });
+
 
 // ==========================================
     // KHIÊN PHÒNG THỦ: CHỐNG CHUỘT PHẢI & F12

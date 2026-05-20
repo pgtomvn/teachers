@@ -156,7 +156,7 @@ body.hovering .cursor-dot-outline {
 /* --- TICKET & LANE HEADER --- */
 .lane { height: 100vh; width: 100%; position: relative; overflow: hidden; }
 .lane-sticky-header { position: absolute; top: 0; left: 0; width: 100%; padding: 20px 40px; display: flex; justify-content: space-between; align-items: flex-start; z-index: 50; pointer-events: none; }
-.lane-ticket { background: #fff; padding: 8px 20px; font-weight: 800; font-family: 'Courier New', monospace; transform: rotate(-5deg); box-shadow: 0 4px 10px rgba(0,0,0,0.2); position: relative; pointer-events: auto; }
+.lane-ticket { background: #fff; padding: 8px 20px; font-weight: 800; font-family: 'Courier New', monospace; transform: rotate(-5deg); box-shadow: 0 4px 10px rgba(0,0,0,0.2); position: relative; pointer-events: auto; will-change: transform, opacity; }
 .ticket-hole { width: 10px; height: 10px; background: #000; border-radius: 50%; position: absolute; top: 50%; transform: translateY(-50%); }
 .ticket-hole:not(.right) { left: -5px; }
 .ticket-hole.right { right: -5px; }
@@ -367,13 +367,13 @@ body.hovering .cursor-dot-outline {
 .outro-header { text-align: center; margin-bottom: 50px; }
 .outro-header h2 { font-family: var(--font-hand); font-size: 4rem; color: var(--c-brown); margin-bottom: 10px; }
 .guestbook-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; }
-.gb-form-card { background: #fff; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 2px dashed var(--c-sage); height: fit-content; }
+.gb-form-card { background: #fff; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 2px dashed var(--c-sage); height: fit-content; will-change: transform, opacity; }
 .gb-form-card h3 { font-family: var(--font-hand-2); margin-bottom: 20px; color: var(--c-dark-green); }
 #gbForm input, #gbForm textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 2px solid #eee; border-radius: 10px; font-family: var(--font-main); transition: 0.3s; }
 #gbForm input:focus, #gbForm textarea:focus { border-color: var(--c-brown); outline: none; }
 #gbBtn { width: 100%; padding: 12px; background: var(--c-brown); color: #fff; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s; }
 #gbBtn:hover { background: var(--c-dark-green); }
-.gb-board-area { background: var(--c-sage); border-radius: 10px; padding: 20px; min-height: 400px; border: 8px solid #c7d6ad; box-shadow: inset 0 0 20px rgba(0,0,0,0.1); position: relative; }
+.gb-board-area { background: var(--c-sage); border-radius: 10px; padding: 20px; min-height: 400px; border: 8px solid #c7d6ad; box-shadow: inset 0 0 20px rgba(0,0,0,0.1); position: relative; will-change: transform, opacity; }
 .pinned-notes { display: flex; flex-wrap: wrap; gap: 15px; align-content: flex-start; }
 .note { width: 180px; padding: 15px; background: #ff9; font-family: var(--font-hand-2); box-shadow: 3px 3px 10px rgba(0,0,0,0.2); position: relative; transition: 0.2s; }
 .note:hover { transform: scale(1.1) !important; z-index: 100; }
@@ -490,3 +490,589 @@ body.hovering .cursor-dot-outline {
 /* Random màu sticker cho sinh động */
 .pin-label:nth-child(2n) .vintage-sticker { background: #ffcdd2; color: #b71c1c; border-color: #ef9a9a; transform: rotate(10deg); right: auto; left: -20px; }
 .pin-label:nth-child(3n) .vintage-sticker { background: #b2dfdb; color: #004d40; border-color: #80cbc4; }
+
+/* ========================================================
+   COUNTDOWN SECTION (STATION RETRO DEPARTURE BOARD)
+   ======================================================== */
+.countdown-section {
+    position: relative;
+    padding: 100px 20px;
+    background-color: var(--c-cream);
+    background-image: 
+        linear-gradient(rgba(225, 225, 225, 0.4) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(225, 225, 225, 0.4) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.countdown-bg-pattern {
+    display: none;
+}
+
+/* Beautiful scrap stickers for countdown section */
+.countdown-decor-sticker {
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    z-index: 5;
+    pointer-events: none;
+    box-shadow: 2px 5px 15px rgba(93, 64, 55, 0.15);
+    border: 2px dashed var(--c-brown);
+    transition: transform 0.3s ease;
+}
+
+.countdown-decor-sticker i {
+    filter: drop-shadow(1px 1.5px 0px rgba(93, 64, 55, 0.2));
+}
+
+.countdown-decor-sticker.sticker-1 {
+    top: 15%;
+    left: 7%;
+    transform: rotate(-12deg);
+    background: #ffecb3;
+    color: #e65100;
+}
+
+.countdown-decor-sticker.sticker-2 {
+    bottom: 22%;
+    right: 8%;
+    transform: rotate(18deg);
+    background: #c8e6c9;
+    color: #1b5e20;
+}
+
+.countdown-container {
+    position: relative;
+    z-index: 3;
+    max-width: 860px;
+    width: 100%;
+    text-align: center;
+    background: #fdfbf7;
+    background-image: 
+        radial-gradient(rgba(93, 64, 55, 0.015) 1px, transparent 0),
+        linear-gradient(to right, rgba(93, 64, 55, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(93, 64, 55, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 22px 22px, 22px 22px;
+    border: 2.5px solid var(--c-brown);
+    outline: 1.5px dashed rgba(93, 64, 55, 0.3);
+    outline-offset: -8px;
+    padding: 60px 45px 50px;
+    border-radius: 4px;
+    box-shadow: 
+        4px 4px 0px var(--c-brown),
+        8px 12px 30px rgba(93, 64, 55, 0.1);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    will-change: transform, opacity;
+}
+
+/* Beautiful corner washi tapes */
+.countdown-container::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -20px;
+    width: 110px;
+    height: 32px;
+    background: rgba(219, 231, 198, 0.7); /* Sage green washi tape */
+    border-left: 2px dashed rgba(93, 64, 55, 0.15);
+    border-right: 2px dashed rgba(93, 64, 55, 0.15);
+    transform: rotate(-15deg);
+    box-shadow: 1px 2px 4px rgba(0,0,0,0.05);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.countdown-container::after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    right: -25px;
+    width: 120px;
+    height: 32px;
+    background: rgba(255, 140, 105, 0.65); /* Sunset coral washi tape */
+    border-left: 2px dashed rgba(93, 64, 55, 0.15);
+    border-right: 2px dashed rgba(93, 64, 55, 0.15);
+    transform: rotate(20deg);
+    box-shadow: 1px 2px 4px rgba(0,0,0,0.05);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.countdown-badge {
+    display: inline-block;
+    background: var(--c-sage);
+    color: var(--c-brown);
+    padding: 8px 22px;
+    border-radius: 30px;
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin-bottom: 25px;
+    border: 2px solid var(--c-brown);
+    box-shadow: 2px 2px 0px rgba(93, 64, 55, 0.15);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transform: rotate(-1deg);
+}
+
+.countdown-title {
+    font-family: var(--font-hand);
+    font-size: clamp(3rem, 6vw, 4.8rem);
+    color: var(--c-brown);
+    margin-bottom: 5px;
+    text-shadow: 1px 1px 0px rgba(93, 64, 55, 0.08);
+    transform: rotate(1deg);
+}
+
+/* Timer layout */
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 5px auto 45px;
+    max-width: 680px;
+}
+
+.time-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    max-width: 130px;
+    transform-style: preserve-3d;
+    cursor: default;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.time-block:hover {
+    transform: translateY(-8px) scale(1.05);
+    z-index: 5;
+}
+
+/* Scrapbook themed timer card layout */
+.flip-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #fffdf8;
+    border-radius: 12px;
+    box-shadow: 
+        0 6px 12px rgba(93, 64, 55, 0.08),
+        0 1px 3px rgba(93, 64, 55, 0.04);
+    border: 2.5px solid var(--c-brown);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.time-block:hover .flip-card {
+    box-shadow: 
+        0 12px 20px rgba(93, 64, 55, 0.15),
+        0 2px 5px rgba(93, 64, 55, 0.05);
+    border-color: var(--c-brown);
+}
+
+/* Unique scrapbook background colors & borders for cards */
+#block-days .flip-card {
+    background-color: #fff6f3; /* soft pastel peach/sunset */
+    border-color: var(--c-sunset);
+}
+#block-hours .flip-card {
+    background-color: #f7faf2; /* soft pastel sage */
+    border-color: #92b06e;
+}
+#block-minutes .flip-card {
+    background-color: #fffef0; /* soft pastel yellow */
+    border-color: #e5c158;
+}
+#block-seconds .flip-card {
+    background-color: #f2fafc; /* soft pastel sky blue */
+    border-color: #7cb8c9;
+}
+
+/* Give each card block a distinct organic rotation */
+#block-days .flip-card { transform: rotate(-2deg); }
+#block-hours .flip-card { transform: rotate(1.5deg); }
+#block-minutes .flip-card { transform: rotate(-1deg); }
+#block-seconds .flip-card { transform: rotate(2.5deg); }
+
+/* Washi tapes on top of cards */
+.flip-card::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 50px;
+    height: 16px;
+    background: rgba(255, 209, 128, 0.6);
+    border-left: 1px dashed rgba(0,0,0,0.06);
+    border-right: 1px dashed rgba(0,0,0,0.06);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    z-index: 5;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+#block-days .flip-card::before { background: rgba(255, 140, 105, 0.5); transform: translateX(-50%) rotate(-5deg); }
+#block-hours .flip-card::before { background: rgba(219, 231, 198, 0.6); transform: translateX(-50%) rotate(3deg); }
+#block-minutes .flip-card::before { background: rgba(255, 235, 150, 0.7); transform: translateX(-50%) rotate(-2deg); }
+#block-seconds .flip-card::before { background: rgba(142, 197, 214, 0.5); transform: translateX(-50%) rotate(4deg); }
+
+.time-block:hover .flip-card::before {
+    transform: translateX(-50%) rotate(0deg) scaleY(1.1);
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-num {
+    font-family: var(--font-hand-2);
+    font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+    font-weight: 900;
+    text-shadow: 1px 1px 0px rgba(93, 64, 55, 0.1);
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+#block-days .time-num { color: var(--c-sunset-dark); }
+#block-hours .time-num { color: #5d6e46; }
+#block-minutes .time-num { color: #8a6f20; }
+#block-seconds .time-num { color: #2e6270; }
+
+.flip-line {
+    display: none !important;
+}
+
+.time-label {
+    font-family: var(--font-hand-2);
+    font-size: 1.25rem;
+    color: var(--c-brown);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.9;
+}
+
+.time-separator {
+    font-family: var(--font-hand-2);
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--c-brown);
+    margin-bottom: 30px;
+    animation: retroBlink 1.5s infinite ease-in-out;
+    user-select: none;
+    opacity: 0.7;
+}
+
+@keyframes retroBlink {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 0.2; transform: scale(0.92); }
+}
+
+.countdown-quote {
+    font-family: var(--font-hand-2);
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: var(--c-brown);
+    max-width: 680px;
+    margin: 20px auto 0;
+    line-height: 1.7;
+    opacity: 0.95;
+    font-style: italic;
+}
+
+/* Beautiful vintage railway ticket note card */
+.countdown-note-card {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 40px auto 10px;
+    padding: 20px 35px;
+    background: #faf2e6; /* Vintage cream ticket */
+    border: 2px solid var(--c-brown);
+    border-style: dashed solid dashed solid; /* Dashed on top/bottom, solid on sides */
+    border-radius: 8px;
+    box-shadow: 
+        4px 4px 0 var(--c-brown),
+        0 10px 20px rgba(93, 64, 55, 0.06);
+    max-width: 680px;
+    width: calc(100% - 20px);
+    text-align: left;
+    font-size: 1.15rem;
+    color: var(--c-brown);
+    font-weight: 800;
+    transform: rotate(-1deg);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform, opacity;
+}
+
+.countdown-note-card:hover {
+    transform: rotate(0deg) translateY(-3px) scale(1.02);
+    box-shadow: 
+        6px 6px 0 var(--c-brown),
+        0 15px 25px rgba(93, 64, 55, 0.1);
+}
+
+/* Ticket punched circles on sides */
+.countdown-note-card::before,
+.countdown-note-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    background: #fdfbf7; /* matching the card parent bg */
+    border: 2px solid var(--c-brown);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.countdown-note-card::before {
+    left: -8px;
+}
+
+.countdown-note-card::after {
+    right: -8px;
+}
+
+/* Shiny metallic pushpin on top center */
+.note-card-pin {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle at 5px 5px, #ff5252, #c62828);
+    border-radius: 50%;
+    box-shadow: 
+        0 2px 4px rgba(0,0,0,0.2),
+        0 4px 10px rgba(0,0,0,0.15),
+        inset -2px -2px 4px rgba(0,0,0,0.4);
+    z-index: 5;
+}
+
+.note-card-pin::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 7px;
+    width: 2px;
+    height: 14px;
+    background: rgba(0,0,0,0.15);
+    transform: rotate(15deg);
+    transform-origin: top center;
+    pointer-events: none;
+}
+
+.ticket-icon {
+    font-size: 1.5rem;
+    color: var(--c-sunset);
+    transform: rotate(-10deg);
+    filter: drop-shadow(1px 2px 0px rgba(93,64,55,0.2));
+    animation: ticketWiggle 3s infinite ease-in-out;
+}
+
+@keyframes ticketWiggle {
+    0%, 100% { transform: rotate(-10deg) scale(1); }
+    50% { transform: rotate(-5deg) scale(1.1); }
+}
+
+.highlight-date {
+    color: var(--c-sunset-dark);
+    background: rgba(255, 140, 105, 0.15);
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px dashed rgba(255, 140, 105, 0.4);
+}
+
+.countdown-railway {
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 50px;
+    z-index: 2;
+    opacity: 0.8;
+}
+
+.railway-line {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .countdown-section {
+        padding: 60px 15px;
+    }
+    .countdown-container {
+        padding: 40px 20px;
+    }
+    .countdown-timer {
+        gap: 8px;
+    }
+    .time-block {
+        gap: 6px;
+    }
+    .time-separator {
+        font-size: 2rem;
+        margin-bottom: 22px;
+    }
+    .countdown-decor-sticker {
+        display: none; /* Hide on mobile to avoid clutter */
+    }
+}
+
+/* ========================================================
+   CINEMATIC PAGE LOADER - RETRO STEAM LOCOMOTIVE TRANSITION
+   ======================================================== */
+.cinematic-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.steam-cloud {
+    position: absolute;
+    border-radius: 50%;
+    /* Warm nostalgic grey smoke */
+    background: radial-gradient(circle, rgba(238, 234, 225, 0.99) 20%, rgba(215, 209, 196, 0.97) 55%, rgba(193, 185, 170, 0.8) 75%, rgba(193, 185, 170, 0) 100%);
+    filter: blur(12px);
+    opacity: 0;
+    width: 70vmax;
+    height: 70vmax;
+    transform: scale(0) translate3d(0, 0, 0);
+    will-change: transform, opacity;
+}
+
+/* Position clouds around corners and edges to puff inwards */
+.steam-cloud.cloud-1 { top: -20%; left: -20%; }
+.steam-cloud.cloud-2 { top: -20%; right: -20%; }
+.steam-cloud.cloud-3 { bottom: -20%; left: -20%; }
+.steam-cloud.cloud-4 { bottom: -20%; right: -20%; }
+
+/* The elegant retro ticket flying across */
+.transition-ticket {
+    position: absolute;
+    width: 380px;
+    height: 140px;
+    background: #faf2e6;
+    border: 3px solid #5d4037;
+    border-radius: 12px;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+    display: flex;
+    z-index: 100;
+    opacity: 0;
+    transform: translate3d(100vw, 50vh, 0) rotate(45deg) scale(0.5);
+    will-change: transform, opacity;
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
+}
+
+/* Ticket dashed border and punched hole divider */
+.transition-ticket::after {
+    content: '';
+    position: absolute;
+    left: 100px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    border-left: 2px dashed #5d4037;
+}
+
+.ticket-stub {
+    width: 100px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid rgba(93, 64, 55, 0.1);
+    background: #f3e6d0;
+}
+
+.ticket-stub .stub-code {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #5d4037;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    letter-spacing: 2px;
+}
+
+.ticket-body {
+    flex: 1;
+    height: 100%;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #faf2e6;
+}
+
+.ticket-title {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #8d6e63;
+    letter-spacing: 1px;
+}
+
+.ticket-route {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: #5d4037;
+    margin: 8px 0;
+}
+
+.ticket-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #795548;
+}
+
+.ticket-stamp {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    border: 3px double #d32f2f;
+    color: #d32f2f;
+    font-family: var(--font-hand-2);
+    font-size: 1.2rem;
+    font-weight: 900;
+    padding: 2px 8px;
+    border-radius: 4px;
+    transform: rotate(-15deg);
+    opacity: 0.85;
+}
