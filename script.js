@@ -536,7 +536,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // CHUYÊN GIA UI/UX: HÀM KHỞI TẠO ĐẾM NGƯỢC GA THANH XUÂN 3D
     // ========================================================
     const initCountdown = () => {
-        const targetDate = new Date("2026-05-25T07:00:00+07:00");
+        const targetDate = new Date("2026-06-11T07:00:00+07:00");
         const daysEl = document.getElementById("days");
         const hoursEl = document.getElementById("hours");
         const minutesEl = document.getElementById("minutes");
