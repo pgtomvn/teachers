@@ -151,7 +151,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     "assets/ost2.mp3",
                     "assets/ost3.mp3",
                     "assets/ost4.mp3",
-                    "assets/ost5.mp3"
+                    "assets/ost5.mp3",
+                    "assets/ost6.mp3"
                 ];
 
                 let currentSong = ""; // Lưu lại bài đang hát
