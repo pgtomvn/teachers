@@ -534,10 +534,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
     // ========================================================
-    // CHUYÊN GIA UI/UX: HÀM KHỞI TẠO ĐẾM NGƯỢC GA THANH XUÂN 3D
+    // CHUYÊN GIA UI/UX: HÀM KHỞI TẠO ĐẾM THỜI GIAN THANH XUÂN ĐÃ QUA
     // ========================================================
     const initCountdown = () => {
-        const targetDate = new Date("2026-06-11T07:00:00+07:00");
+        const startDate = new Date("2026-06-11T07:00:00+07:00");
         const daysEl = document.getElementById("days");
         const hoursEl = document.getElementById("hours");
         const minutesEl = document.getElementById("minutes");
@@ -548,13 +548,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const updateClock = () => {
             const now = new Date();
-            const diff = targetDate - now;
-
-            if (diff <= 0) {
-                clearInterval(timerInterval);
-                timerEl.innerHTML = `<div class="countdown-finished font-hand" style="font-size: clamp(2rem, 5vw, 3.5rem); color: var(--c-sunset-dark); text-shadow: 2px 2px 0px rgba(93,64,55,0.1); width: 100%; text-align: center; font-weight: bold; letter-spacing: 2px;">VẬT TRÌNH BÀI BẾ GIẢNG</div>`;
-                return;
-            }
+            const diff = Math.max(0, now - startDate);
 
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
