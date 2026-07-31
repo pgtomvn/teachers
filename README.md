@@ -522,7 +522,3 @@ This project is licensed under the MIT License - see details below.
 **Repository:** github.com/pgtomvn/teachers  
 **Status:** Active & Maintained
 
----
-
-*"Hành trình rực rỡ của 12A2 sẽ mãi còn trong tim tất cả chúng ta."*  
-*"The radiant journey of 12A2 will forever remain in our hearts."*
