@@ -265,15 +265,15 @@ The `teachers.json` file contains comprehensive data for 30+ teachers organized 
 ```
 
 ### Teacher Categories
-- **Administration & Homeroom Teachers** - 班主任 (3 teachers)
-- **Mathematics Department** - 数学科 (4 teachers)
-- **Literature & Vietnamese** - 文学科 (3 teachers)
-- **English Department** - 英語科 (5 teachers)
-- **Physics & Chemistry** - 理科 (5 teachers)
-- **Geography & History** - 社会科 (5 teachers)
-- **Technology & IT** - 技術科 (4 teachers)
-- **Physical Education & Defense** - 体育・国防科 (4 teachers)
-- **Economics & Law** - 経済法科 (3 teachers)
+- **Administration & Homeroom Teachers** (3 teachers)
+- **Mathematics Department** (4 teachers)
+- **Literature & Vietnamese** (3 teachers)
+- **English Department** (5 teachers)
+- **Physics & Chemistry** (5 teachers)
+- **Geography & History** (5 teachers)
+- **Technology & IT** (4 teachers)
+- **Physical Education & Defense** (4 teachers)
+- **Economics & Law** (3 teachers)
 
 ---
 
